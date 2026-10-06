@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>7층 누수 배상 안내</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: 법률 검토서 한 단 읽기 폭(넓은 화면은 왼쪽 고정 목차). 첫 화면의 핵심 장치는 7·6·5층 건물 단면도. */
+:root {
+  --paper: #F3F6F9;
+  --sheet: #FFFFFF;
+  --ink: #12202F;
+  --ink-2: #2D3B4C;
+  --muted: #5A6A7C;
+  --line: #D6DEE7;
+  --line-strong: #B5C3D2;
+  --water: #1A65A6;
+  --water-soft: #E2EDF7;
+  --stain: #8F5B0E;
+  --stain-soft: #F4E8D3;
+  --risk: #A3271F;
+  --risk-soft: #F9E4E1;
+  --safe: #22693F;
+  --safe-soft: #DFEFE5;
+  --code: #ECF1F6;
+  --font-display: "Hahmlet", "AppleMyungjo", "Batang", "Noto Serif KR", serif;
+  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "D2Coding", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-md: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.625rem;
+  --fs-2xl: 2.125rem;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1520;
+    --sheet: #13202F;
+    --ink: #E2E9F1;
+    --ink-2: #C3CEDA;
+    --muted: #93A3B5;
+    --line: #24364A;
+    --line-strong: #354B63;
+    --water: #6EB0EC;
+    --water-soft: #15314B;
+    --stain: #DDAA5B;
+    --stain-soft: #33280F;
+    --risk: #F08D81;
+    --risk-soft: #3B1A17;
+    --safe: #74C596;
+    --safe-soft: #133022;
+    --code: #0F1A27;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1520;
+  --sheet: #13202F;
+  --ink: #E2E9F1;
+  --ink-2: #C3CEDA;
+  --muted: #93A3B5;
+  --line: #24364A;
+  --line-strong: #354B63;
+  --water: #6EB0EC;
+  --water-soft: #15314B;
+  --stain: #DDAA5B;
+  --stain-soft: #33280F;
+  --risk: #F08D81;
+  --risk-soft: #3B1A17;
+  --safe: #74C596;
+  --safe-soft: #133022;
+  --code: #0F1A27;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+img, svg { max-width: 100%; }
+a { color: var(--water); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--water); outline-offset: 2px; }
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-inline: 18px;
+  padding-block: 28px 72px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+}
+@media (min-width: 1100px) {
+  .page { grid-template-columns: 200px minmax(0, 1fr); gap: 48px; }
+}
+main { min-width: 0; max-width: 800px; }
+
+/* 목차 */
+.toc { font-size: var(--fs-sm); }
+.toc-title { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: 0.08em; color: var(--muted); margin: 0 0 8px; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.toc a { display: inline-block; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-2); text-decoration: none; background: var(--sheet); }
+.toc a:hover { border-color: var(--water); color: var(--water); }
+@media (min-width: 1100px) {
+  .toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; }
+  .toc ol { flex-direction: column; gap: 2px; }
+  .toc a { border: 0; border-left: 2px solid transparent; border-radius: 0; background: none; padding: 5px 0 5px 12px; }
+  .toc a.is-active { border-left-color: var(--water); color: var(--ink); font-weight: 600; }
+}
+
+/* 머리말 */
+.doc-head { display: grid; gap: 14px; padding-bottom: 24px; border-bottom: 1px solid var(--line-strong); }
+.eyebrow { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: 0.08em; color: var(--water); margin: 0; }
+h1, h2 { font-family: var(--font-display); text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: var(--fs-2xl); line-height: 1.3; margin: 0; font-weight: 700; }
+.lead { font-size: var(--fs-md); color: var(--ink-2); margin: 0; max-width: 40em; }
+.meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px 20px; margin: 6px 0 0; }
+.meta div { min-width: 0; }
+.meta dt { font-size: var(--fs-xs); color: var(--muted); letter-spacing: 0.02em; }
+.meta dd { margin: 0; font-size: var(--fs-sm); font-weight: 600; }
+
+section { padding-top: 44px; scroll-margin-top: 16px; }
+h2 { font-size: var(--fs-xl); line-height: 1.35; margin: 0 0 14px; font-weight: 700; }
+h3 { font-size: var(--fs-lg); line-height: 1.45; margin: 30px 0 10px; font-weight: 700; text-wrap: balance; }
+h3 .role { font-size: var(--fs-sm); font-weight: 500; color: var(--muted); margin-left: 6px; }
+h4 { font-size: var(--fs-md); margin: 18px 0 6px; font-weight: 700; }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 1.3em; }
+li { margin: 4px 0; }
+.section-lead { color: var(--ink-2); max-width: 42em; }
+.small { font-size: var(--fs-sm); color: var(--muted); }
+.mono { font-family: var(--font-mono); font-size: 0.92em; }
+strong { font-weight: 700; }
+
+/* 한 줄 결론 */
+.bottom-line { font-family: var(--font-display); font-size: var(--fs-lg); line-height: 1.6; font-weight: 700; margin: 0 0 20px; max-width: 34em; }
+.bottom-line mark { background: var(--risk-soft); color: var(--risk); padding: 0 4px; border-radius: 3px; }
+
+/* 단면도 */
+.figure { background: var(--sheet); border: 1px solid var(--line); border-radius: 6px; padding: 16px; margin: 0 0 18px; }
+.figure-scroll { overflow-x: auto; }
+.figure svg { display: block; width: 100%; max-width: 540px; margin: 0 auto; height: auto; }
+@media (max-width: 520px) { .figure { padding: 12px 10px; } }
+.figure figcaption { font-size: var(--fs-xs); color: var(--muted); margin-top: 10px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 10px 0 0; padding: 0; list-style: none; font-size: var(--fs-xs); color: var(--ink-2); }
+.legend li { display: inline-flex; align-items: center; gap: 6px; margin: 0; }
+.swatch { display: inline-block; width: 18px; height: 10px; border-radius: 2px; }
+.sw-leak { background: var(--risk); width: 10px; height: 10px; border-radius: 50%; }
+.sw-flow { background: none; border-top: 2px dashed var(--water); height: 0; }
+.sw-stain { background: var(--stain-soft); border: 1px solid var(--stain); }
+.sw-riser { background: none; border-left: 2px solid var(--muted); border-right: 2px solid var(--muted); width: 10px; }
+.svg-wall { fill: var(--sheet); stroke: var(--line-strong); stroke-width: 1.5; }
+.svg-f7 { fill: var(--risk-soft); }
+.svg-slab { fill: var(--line-strong); }
+.svg-pipe { stroke: var(--risk); stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.svg-fixture { fill: var(--sheet); stroke: var(--ink-2); stroke-width: 1.5; }
+.svg-leak { fill: var(--risk); }
+.svg-leak-ring { fill: none; stroke: var(--risk); stroke-width: 1.5; opacity: 0.5; }
+.svg-flow { stroke: var(--water); stroke-width: 2.5; stroke-dasharray: 6 5; fill: none; }
+.svg-stain { fill: var(--stain-soft); stroke: var(--stain); stroke-width: 1.2; }
+.svg-drop { fill: var(--water); }
+.svg-riser { stroke: var(--muted); stroke-width: 2; fill: none; }
+.svg-floor { font-family: var(--font-mono); font-size: 13px; font-weight: 600; fill: var(--muted); }
+.svg-title { font-family: var(--font-body); font-size: 17px; font-weight: 700; fill: var(--ink); }
+.svg-sub { font-family: var(--font-body); font-size: 14px; fill: var(--ink-2); }
+.svg-pipe-label { font-family: var(--font-body); font-size: 13px; font-weight: 600; fill: var(--risk); }
+.svg-note { font-family: var(--font-body); font-size: 13px; fill: var(--muted); }
+
+/* 판정 카드 */
+.verdicts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin: 0 0 18px; }
+.verdict { --c: var(--muted); --c-soft: var(--code); background: var(--sheet); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 4px; padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.verdict.v-risk { --c: var(--risk); --c-soft: var(--risk-soft); }
+.verdict.v-joint { --c: var(--stain); --c-soft: var(--stain-soft); }
+.verdict.v-safe { --c: var(--safe); --c-soft: var(--safe-soft); }
+.v-tag { align-self: flex-start; margin: 0; font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.02em; color: var(--c); background: var(--c-soft); padding: 2px 9px; border-radius: 999px; }
+.verdict h3 { margin: 2px 0 0; font-size: var(--fs-md); }
+.verdict h3 span { font-weight: 500; color: var(--muted); font-size: var(--fs-sm); margin-left: 4px; }
+.verdict p { margin: 0; font-size: var(--fs-sm); }
+.v-basis { margin-top: auto !important; padding-top: 6px; font-family: var(--font-mono); font-size: var(--fs-xs) !important; color: var(--muted); }
+
+/* 책임 흐름 */
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 8px; }
+.flow .node { padding: 6px 12px; border-radius: 4px; border: 1px solid var(--line-strong); background: var(--sheet); font-weight: 600; font-size: var(--fs-sm); }
+.flow .node.n-risk { border-color: var(--risk); color: var(--risk); background: var(--risk-soft); }
+.flow .node.n-joint { border-color: var(--stain); color: var(--stain); background: var(--stain-soft); }
+.flow .arrow { font-size: var(--fs-xs); color: var(--muted); white-space: nowrap; }
+.flow-note { font-size: var(--fs-sm); color: var(--ink-2); }
+
+/* 강조 상자 */
+.callout { border: 1px solid var(--line); background: var(--sheet); border-radius: 6px; padding: 14px 18px; margin: 16px 0; }
+.callout > :last-child { margin-bottom: 0; }
+.callout-title { font-weight: 700; margin: 0 0 6px; }
+.callout.c-water { background: var(--water-soft); border-color: transparent; }
+.callout.c-stain { background: var(--stain-soft); border-color: transparent; }
+
+/* 표 */
+.table-wrap { overflow-x: auto; margin: 0 0 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--sheet); }
+table { border-collapse: collapse; width: 100%; font-size: var(--fs-sm); }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th { font-weight: 700; background: var(--code); white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+.compare { min-width: 680px; }
+.compare tr.this-case td { background: var(--water-soft); }
+.tag { display: inline-block; font-size: var(--fs-xs); font-weight: 700; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.tag-water { color: var(--water); background: var(--water-soft); border: 1px solid var(--water); }
+.tag-risk { color: var(--risk); background: var(--risk-soft); }
+.tag-safe { color: var(--safe); background: var(--safe-soft); }
+.tag-stain { color: var(--stain); background: var(--stain-soft); }
+.st-ok { color: var(--safe); font-weight: 600; }
+.st-check { color: var(--stain); font-weight: 600; }
+
+/* 기준 3가지 */
+.criteria { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 0 0 18px; padding: 0; list-style: none; counter-reset: c; }
+.criteria li { margin: 0; padding: 12px 14px; border-top: 2px solid var(--water); background: var(--sheet); counter-increment: c; font-size: var(--fs-sm); }
+.criteria li::before { content: "기준 " counter(c); display: block; font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--water); letter-spacing: 0.04em; }
+.criteria b { display: block; font-size: var(--fs-md); margin: 2px 0 4px; }
+
+/* 조문 */
+.statute { margin: 0 0 16px; padding: 12px 0 0; border-top: 1px solid var(--line-strong); }
+.statute-ref { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--water); letter-spacing: 0.03em; margin: 0 0 4px; }
+.statute h4 { margin: 0 0 6px; }
+.statute blockquote { margin: 0 0 8px; font-family: var(--font-display); font-size: 1rem; line-height: 1.85; color: var(--ink); }
+.statute blockquote p { margin: 0 0 4px; }
+.statute .why { font-size: var(--fs-sm); color: var(--ink-2); margin: 0; }
+.statute .why::before { content: "이 사건에서 → "; color: var(--water); font-weight: 600; }
+
+/* 판례 */
+.case-group { font-size: var(--fs-md); margin: 28px 0 10px; color: var(--ink-2); }
+.case-group + .small { margin-top: -4px; }
+.cases { display: grid; gap: 12px; }
+.case { background: var(--sheet); border: 1px solid var(--line); border-radius: 6px; padding: 14px 18px; min-width: 0; }
+.case.star { border-color: var(--water); box-shadow: 0 0 0 1px var(--water) inset; }
+.case-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0 0 6px; }
+.case-no { font-family: var(--font-mono); font-size: var(--fs-sm); font-weight: 600; }
+.badge { font-size: var(--fs-xs); font-weight: 700; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.b-cross { color: var(--safe); background: var(--safe-soft); }
+.b-single { color: var(--stain); background: var(--stain-soft); }
+.b-star { color: var(--water); background: var(--water-soft); }
+.case h4 { margin: 0 0 6px; font-size: var(--fs-md); }
+.case blockquote { margin: 0 0 8px; padding: 8px 12px; background: var(--code); border-radius: 4px; font-family: var(--font-display); font-size: var(--fs-sm); line-height: 1.8; }
+.case p { font-size: var(--fs-sm); margin: 0 0 6px; }
+.case .use { color: var(--ink-2); }
+.case .use b { color: var(--water); }
+
+/* 반론 */
+.qa { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.qa li { margin: 0; background: var(--sheet); border: 1px solid var(--line); border-radius: 6px; padding: 12px 16px; }
+.qa .q { font-weight: 700; margin: 0 0 4px; }
+.qa .q::before { content: "A산부인과 측 주장 "; font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--risk); font-weight: 600; margin-right: 6px; }
+.qa .a { margin: 0; font-size: var(--fs-sm); color: var(--ink-2); }
+.qa .a::before { content: "답변 "; font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--safe); font-weight: 600; margin-right: 6px; }
+
+/* 체크리스트 */
+.checklist { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 6px; }
+.checklist li { margin: 0; }
+.checklist label { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; align-items: start; padding: 8px 12px; background: var(--sheet); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; font-size: var(--fs-sm); }
+.checklist input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--water); }
+.checklist input:checked + span { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line-strong); }
+.when { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--water); letter-spacing: 0.04em; margin: 18px 0 6px; }
+
+/* 진행 순서 */
+.steps { list-style: none; padding: 0; margin: 0 0 16px; counter-reset: s; }
+.steps > li { position: relative; margin: 0; padding: 0 0 18px 44px; counter-increment: s; }
+.steps > li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--water); color: var(--sheet); font-family: var(--font-mono); font-weight: 600; display: grid; place-items: center; font-size: var(--fs-sm); }
+.steps > li::after { content: ""; position: absolute; left: 14px; top: 34px; bottom: 4px; width: 2px; background: var(--line); }
+.steps > li:last-child::after { display: none; }
+.steps b { display: block; }
+.steps .t { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--muted); }
+.steps p, .steps ul { font-size: var(--fs-sm); margin: 4px 0 0; }
+
+/* 양식·프롬프트 */
+.tpl { margin: 0 0 22px; }
+.tpl-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 6px; }
+.tpl-head h4 { margin: 0; }
+.copy { font: inherit; font-size: var(--fs-xs); font-weight: 700; color: var(--water); background: var(--sheet); border: 1px solid var(--water); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.copy:hover { background: var(--water-soft); }
+pre.doc { margin: 0; padding: 14px 16px; background: var(--code); border: 1px solid var(--line); border-radius: 6px; font-family: var(--font-body); font-size: var(--fs-sm); line-height: 1.75; white-space: pre-wrap; word-break: keep-all; overflow-wrap: anywhere; max-height: 520px; overflow: auto; }
+.ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin: 0 0 18px; }
+.ai-card { background: var(--sheet); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; font-size: var(--fs-sm); }
+.ai-card b { display: block; margin-bottom: 2px; }
+
+/* 출처 */
+.sources { font-size: var(--fs-sm); padding-left: 1.2em; }
+.sources li { margin: 6px 0; overflow-wrap: anywhere; }
+.footer-note { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--line-strong); font-size: var(--fs-sm); color: var(--muted); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.4rem; }
+  .bottom-line { font-size: 1.125rem; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  .toc, .copy { display: none !important; }
+  .page { display: block; padding: 0; }
+  section { break-inside: auto; }
+  .case, .verdict, .qa li, .figure { break-inside: avoid; }
+  pre.doc { max-height: none; overflow: visible; }
+}
+</style>
+<style>
+/* 전달용: 목차 없이 한 단으로 읽는 설명 자료 */
+.page.solo { grid-template-columns: minmax(0, 1fr); }
+.page.solo main { max-width: 780px; width: 100%; margin: 0 auto; }
+.requests { margin: 0 0 16px; padding-left: 1.4em; }
+.requests li { margin: 8px 0; padding-left: 4px; }
+.requests li::marker { font-family: var(--font-mono); color: var(--water); font-weight: 600; }
+.basis-note { font-size: var(--fs-sm); color: var(--ink-2); margin: 0 0 14px; }
+</style>
+</head>
+<body>
+<div class="page solo">
+<main>
+<header class="doc-head">
+  <p class="eyebrow">B타워 7층 누수 · 배상책임 안내</p>
+  <h1>7층 급수배관 누수, 배상 책임은 이렇게 정해집니다</h1>
+  <p class="lead">B타워 7층 구분소유자(임대인)가 A산부인과에 드리는 설명 자료입니다. 이번 누수의 책임 관계를 법 조문과 대법원 판례로 정리했습니다.</p>
+  <p class="small">공개 저장소 보관본입니다. 병원과 건물 이름은 가명(A산부인과, B타워)으로 바꿨습니다.</p>
+  <dl class="meta">
+    <div><dt>받는 분</dt><dd>A산부인과 원장님</dd></div>
+    <div><dt>보내는 사람</dt><dd>B타워 7층 구분소유자</dd></div>
+    <div><dt>작성일</dt><dd>2026. 10. 6.</dd></div>
+  </dl>
+</header>
+
+<section id="t-facts">
+  <h2>확인된 사실</h2>
+  <ul>
+    <li>7층은 인테리어가 없는 빈 공실 상태로 임대되었고, 임대인은 인테리어 공사를 하지 않았습니다.</li>
+    <li>A산부인과가 개원을 위해 수도배관을 포함한 인테리어 전체를 시공했습니다.</li>
+    <li>A산부인과가 새로 설치한 수도배관에서 누수가 발생해 바로 아래 6층과 그 아래 5층에 피해가 났습니다.</li>
+    <li>A산부인과도 누수가 자신이 시공한 배관에서 발생했음을 확인했습니다.</li>
+  </ul>
+</section>
+
+<section id="t-structure">
+  <h2>책임 구조</h2>
+  <figure class="figure">
+    <div class="figure-scroll">
+      <svg viewBox="0 0 420 384" role="img" aria-labelledby="bldg-title bldg-desc">
+        <title id="bldg-title">B타워 7층·6층·5층 단면도</title>
+        <desc id="bldg-desc">7층 A산부인과가 새로 설치한 급수배관의 누수 지점에서 물이 슬래브를 지나 6층 천장과 5층 천장으로 번진 경로. 오른쪽 공용 입상관은 원인이 아님.</desc>
+        <rect class="svg-wall" x="6" y="24" width="408" height="340" rx="2"/>
+        <rect class="svg-f7" x="7" y="25" width="406" height="103"/>
+        <rect class="svg-slab" x="6" y="128" width="408" height="10"/>
+        <rect class="svg-slab" x="6" y="238" width="408" height="10"/>
+        <rect class="svg-slab" x="6" y="348" width="408" height="10"/>
+        <line class="svg-riser" x1="384" y1="14" x2="384" y2="372"/>
+        <line class="svg-riser" x1="394" y1="14" x2="394" y2="372"/>
+        <text class="svg-floor" x="20" y="48">7F</text>
+        <text class="svg-title" x="20" y="70">A산부인과 (임차인)</text>
+        <text class="svg-sub" x="20" y="90">빈 공실을 임차해 인테리어 전체 시공</text>
+        <text class="svg-pipe-label" x="214" y="108">신설 급수배관 · 누수</text>
+        <path class="svg-pipe" d="M214 118 H350 V90"/>
+        <rect class="svg-fixture" x="338" y="76" width="24" height="12" rx="2"/>
+        <circle class="svg-leak-ring" cx="292" cy="118" r="10"/>
+        <circle class="svg-leak" cx="292" cy="118" r="5.5"/>
+        <path class="svg-flow" d="M292 126 V146"/>
+        <ellipse class="svg-stain" cx="292" cy="146" rx="70" ry="6"/>
+        <circle class="svg-drop" cx="274" cy="170" r="3"/>
+        <circle class="svg-drop" cx="306" cy="186" r="3"/>
+        <circle class="svg-drop" cx="290" cy="206" r="3"/>
+        <path class="svg-flow" d="M292 214 V256"/>
+        <ellipse class="svg-stain" cx="292" cy="256" rx="52" ry="5"/>
+        <circle class="svg-drop" cx="282" cy="282" r="3"/>
+        <circle class="svg-drop" cx="300" cy="300" r="3"/>
+        <text class="svg-floor" x="20" y="160">6F</text>
+        <text class="svg-title" x="20" y="182">6층 · 다른 구분소유자</text>
+        <text class="svg-sub" x="20" y="202">천장·벽체·집기 피해</text>
+        <text class="svg-floor" x="20" y="270">5F</text>
+        <text class="svg-title" x="20" y="292">5층 · 다른 구분소유자</text>
+        <text class="svg-sub" x="20" y="312">6층을 거쳐 내려온 물로 피해</text>
+        <text class="svg-note" x="414" y="382" text-anchor="end">공용 입상관 · 원인 아님</text>
+      </svg>
+    </div>
+    <ul class="legend">
+      <li><span class="swatch sw-leak"></span>누수 지점(A산부인과 신설 배관)</li>
+      <li><span class="swatch sw-flow"></span>물이 내려간 경로</li>
+      <li><span class="swatch sw-stain"></span>천장 얼룩·피해</li>
+      <li><span class="swatch sw-riser"></span>공용 입상관(관리단)</li>
+    </ul>
+    <figcaption>배관 위치와 피해 범위는 설명용 개념도입니다. 실제 위치는 누수탐지 소견서로 특정합니다.</figcaption>
+  </figure>
+  <div class="verdicts">
+    <article class="verdict v-risk">
+      <p class="v-tag">1차 배상책임</p>
+      <h3>A산부인과<span>임차인</span></h3>
+      <p>누수가 난 배관을 설치하고 점유·관리하는 공작물 점유자입니다.</p>
+      <p class="v-basis">민법 758조 1항 본문</p>
+    </article>
+    <article class="verdict v-joint">
+      <p class="v-tag">함께 책임</p>
+      <h3>인테리어 시공업체<span>수급인</span></h3>
+      <p>배관을 시공한 업체도 피해자에게 책임질 수 있습니다. A산부인과는 배상한 뒤 업체에 구상할 수 있습니다.</p>
+      <p class="v-basis">민법 750조 · 758조 3항</p>
+    </article>
+    <article class="verdict v-safe">
+      <p class="v-tag">원칙적으로 책임 없음</p>
+      <h3>7층 소유자<span>임대인</span></h3>
+      <p>빈 공실로 인도했고 배관을 설치하지 않았습니다. 소유자 책임은 점유자가 면책될 때에만 생기는 2차 책임입니다.</p>
+      <p class="v-basis">민법 758조 1항 단서</p>
+    </article>
+    <article class="verdict v-safe">
+      <p class="v-tag">책임 없음</p>
+      <h3>관리단<span>공용부분 관리</span></h3>
+      <p>원인이 7층 전유부분 안의 신설 배관으로 확인되어 공용부분 하자 추정이 적용되지 않습니다.</p>
+      <p class="v-basis">집합건물법 6조</p>
+    </article>
+  </div>
+</section>
+
+<section id="t-basis">
+  <h2>근거</h2>
+  <p class="basis-note">판결 요지는 판례 데이터베이스에 실린 문구입니다. 원문은 대법원 종합법률정보(glaw.scourt.go.kr)에서 사건번호로 조회할 수 있습니다.</p>
+
+  <h3>공작물 점유자가 먼저 배상합니다</h3>
+  <div class="statute">
+    <p class="statute-ref">민법 제758조</p>
+    <h4>공작물등의 점유자, 소유자의 책임</h4>
+    <blockquote>
+      <p>① 공작물의 설치 또는 보존의 하자로 인하여 타인에게 손해를 가한 때에는 공작물점유자가 손해를 배상할 책임이 있다. 그러나 점유자가 손해의 방지에 필요한 주의를 해태하지 아니한 때에는 그 소유자가 손해를 배상할 책임이 있다.</p>
+      <p>③ 전2항의 경우에 점유자 또는 소유자는 그 손해의 원인에 대한 책임있는 자에 대하여 구상권을 행사할 수 있다.</p>
+    </blockquote>
+  </div>
+  <div class="cases">
+    <article class="case">
+      <div class="case-head"><span class="case-no">대법원 1993. 1. 12. 선고 92다23551</span></div>
+      <blockquote>공작물의 설치 또는 보존의 하자로 인하여 타인에게 가한 손해를 배상할 책임은 제1차적으로 공작물을 직접적·구체적으로 지배하면서 사실상 점유관리하는 공작물의 점유자에게 있는 것으로서, 공작물의 점유자가 손해의 방지에 필요한 주의를 해태하지 아니하였음을 입증함으로써 면책될 때에 제2차적으로 공작물의 소유자가 그 손해를 배상할 책임을 지게 된다.</blockquote>
+    </article>
+    <article class="case">
+      <div class="case-head"><span class="case-no">대법원 2000. 4. 21. 선고 2000다386</span></div>
+      <blockquote>민법 제758조 제1항 소정의 공작물점유자라 함은 공작물을 사실상 지배하면서 그 설치 또는 보존상의 하자로 인하여 발생할 수 있는 각종 사고를 방지하기 위하여 공작물을 보수·관리할 권한 및 책임이 있는 자를 말한다.</blockquote>
+      <p class="use"><b>이 사건에서:</b> 7층을 쓰면서 수도배관을 직접 설치한 A산부인과가 점유자에 해당합니다.</p>
+    </article>
+  </div>
+
+  <h3>공사를 업체에 맡겼어도 점유자 책임은 같습니다</h3>
+  <div class="cases">
+    <article class="case star">
+      <div class="case-head"><span class="case-no">대법원 2006. 4. 27. 선고 2006다4564</span></div>
+      <blockquote>민법 제757조에 의한 도급인의 책임과 민법 제758조 제1항에 의한 공작물 점유자의 책임은 그 법률요건과 효과를 달리하는 것이므로, … 민법 제758조 제1항에 의한 손해배상책임을 인정하는 데 있어 민법 제757조 본문이 장애가 되는 것은 아니다.</blockquote>
+      <p>건물 일부를 쓰던 사람이 배관공사를 업체에 맡겼다가 누수가 난 사건에서, 대법원은 공사를 맡긴 점유자에게 배상 책임을 인정했습니다.</p>
+      <p class="use"><b>이 사건에서:</b> 시공업체의 잘못은 A산부인과가 배상한 뒤 업체에 구상할 사유입니다(민법 제758조 제3항).</p>
+    </article>
+  </div>
+
+  <h3>면책은 점유자가 증명해야 합니다</h3>
+  <div class="cases">
+    <article class="case">
+      <div class="case-head"><span class="case-no">대법원 2008. 3. 13. 선고 2007다29287</span></div>
+      <blockquote>관리상 하자가 인정되는 이상 그 하자가 불가항력에 의한 것이거나 손해의 방지에 필요한 주의를 해태하지 아니하였다는 점을 주장·입증하여야 비로소 그 책임을 면할 수 있다.</blockquote>
+    </article>
+  </div>
+
+  <h3>관리단 책임이 아닌 이유</h3>
+  <div class="statute">
+    <p class="statute-ref">집합건물의 소유 및 관리에 관한 법률 제6조</p>
+    <h4>건물의 설치·보존상의 흠 추정</h4>
+    <blockquote><p>전유부분이 속하는 1동의 건물의 설치 또는 보존의 흠으로 인하여 다른 자에게 손해를 입힌 경우에는 그 흠은 공용부분에 존재하는 것으로 추정한다.</p></blockquote>
+    <p class="why">원인 위치가 불분명할 때 적용되는 추정입니다. 원인이 7층 전유부분 안의 신설 배관으로 확인되었으므로 적용되지 않습니다.</p>
+  </div>
+  <div class="cases">
+    <article class="case">
+      <div class="case-head"><span class="case-no">대법원 1995. 2. 28. 선고 94다9269 · 대법원 1999. 9. 17. 선고 99다1345</span></div>
+      <p>공용부분인지는 건물 구조에 따른 객관적 용도로, 구분소유가 성립한 때를 기준으로 판단하며, 그 뒤의 개조나 이용 변화는 영향을 주지 않는다는 판례입니다.</p>
+      <p class="use"><b>이 사건에서:</b> 준공 뒤 진료 공간에만 쓰려고 새로 설치한 배관은 공용부분이 아닙니다.</p>
+    </article>
+  </div>
+
+  <h3>아파트에서 집주인이 배상하는 경우와 다른 이유</h3>
+  <p>아파트에서 집주인이 아래층 누수를 배상하는 경우는 대부분 분양 때부터 바닥에 묻혀 있던 배관처럼 집주인 쪽 기존 시설에서 물이 샌 경우입니다. 세입자는 그런 숨은 시설의 하자를 알거나 막을 수 없기 때문입니다. 대법원 2017. 8. 29. 선고 2017다227103 판결도 상가 슬래브에 원래 묻혀 있던 배관이 부식된 사건에서 임대인 책임을 인정했습니다.</p>
+  <p>이번 누수는 임차인이 새로 설치한 배관에서 발생했습니다. 책임을 가르는 기준은 물이 샌 시설을 누가 설치했고 누가 관리하느냐이며, 이 기준으로 보면 배관을 설치하고 관리하는 쪽이 책임을 집니다.</p>
+
+  <h3>임차인의 보존 의무</h3>
+  <div class="statute">
+    <p class="statute-ref">민법 제374조 · 제654조 · 제615조 · 집합건물법 제5조 제4항</p>
+    <h4>선량한 관리자의 주의, 원상회복, 건물 보존에 해로운 행위 금지</h4>
+    <p class="why">임차인은 임차한 호실을 선량한 관리자의 주의로 보존하고, 반환할 때 원상회복해야 합니다. 구분소유자가 아닌 점유자도 건물 보존에 해로운 행위를 하지 않을 의무를 집니다.</p>
+  </div>
+</section>
+
+<section id="t-requests">
+  <h2>요청 드리는 사항</h2>
+  <ol class="requests">
+    <li>누수 부위의 완전한 수리와 재발 방지 조치, 그 결과를 알려 주십시오.</li>
+    <li>6층·5층 피해자와의 배상 협의와 배상을 A산부인과(시공업체·보험사 포함)의 책임으로 직접 처리해 주십시오.</li>
+    <li>A산부인과와 시공업체의 배상책임보험에 사고를 접수하고, 보험사·증권번호·담당자를 알려 주십시오.</li>
+    <li>인테리어 시공업체의 상호·대표자·연락처를 알려 주십시오.</li>
+    <li>7층 바닥·방수층 등에 손상이 있다면 원상회복해 주십시오.</li>
+  </ol>
+  <p>이 자료를 받으신 날부터 7일 안에 회신을 부탁드립니다. 원만한 해결을 위해 협조해 주시면 감사하겠습니다.</p>
+  <p class="footer-note">이 자료는 공개된 법령과 판례를 정리한 것입니다. 조문은 국가법령정보센터(law.go.kr), 판례는 대법원 종합법률정보(glaw.scourt.go.kr)에서 확인할 수 있습니다.</p>
+</section>
+</main>
+</div>
+</body>
+</html>

@@ -18,6 +18,12 @@
 | [docs/HANDOVER.md](docs/HANDOVER.md) | **인계서** — 원 지시사항, 막힌 지점, 확보한 리서치 결과, 설계 아키텍처, 남은 조사 항목 |
 | [docs/PROMPT.md](docs/PROMPT.md) | **새 세션에 붙여넣을 요청문** — 로컬 Claude Code에서 이 작업을 처음부터 다시 진행할 때 사용 |
 
+## 다른 문서
+
+| 폴더 | 내용 |
+|---|---|
+| [leak-liability/](leak-liability/) | 집합건물 7층 임차인 인테리어 배관 누수 배상책임 검토 (가명 처리본) |
+
 ## 빠른 참고
 
 이미 교차검증된 "하지 말아야 할 것" 목록은 [HANDOVER.md 4-2절](docs/HANDOVER.md)에 있습니다.
