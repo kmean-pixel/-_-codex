@@ -1,0 +1,753 @@
+<title>K스타타워 9층 창호 검토</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: 한 줄 문서 흐름 + 섹션별 반응형 그리드. 카드 테두리는 비교 대상(시공안·특약)에만. 강조색은 K스타타워 브랜드 블루, 열은 앰버 */
+:root{
+  --bg:#f3f6f8; --surface:#ffffff; --surface-2:#eaf0f4; --ink:#0f1d27; --ink-2:#3e4d59; --muted:#5f6f7b; --line:#d6e0e7; --line-2:#bccad5;
+  --brand:#0e6fa8; --brand-ink:#0b5785; --brand-soft:#e3f0f8;
+  --heat:#d9772a; --heat-soft:#fbe9d8; --air:#1b86ad;
+  --good:#1d7a37; --good-bg:#e4f3e8; --warn:#865700; --warn-bg:#fbf0d6; --serious:#a5461a; --serious-bg:#fbe6dc; --critical:#a91f1f; --critical-bg:#f9e1e1;
+  --zone:rgba(208,59,59,.11); --zone-line:#c43c3c;
+  --f-display:"IBM Plex Sans KR","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1218; --surface:#111b23; --surface-2:#16242f; --ink:#e5ecf1; --ink-2:#b2bfc9; --muted:#8fa0ac; --line:#223340; --line-2:#30485a;
+    --brand:#56aee6; --brand-ink:#8fcaf0; --brand-soft:#0f2f47;
+    --heat:#f0a35a; --heat-soft:#3b2716; --air:#5cc3e6;
+    --good:#6cc786; --good-bg:#11301c; --warn:#f2c35b; --warn-bg:#33290f; --serious:#f4a074; --serious-bg:#3a2014; --critical:#f28b8b; --critical-bg:#3b1717;
+    --zone:rgba(240,110,110,.15); --zone-line:#f07a7a; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1218; --surface:#111b23; --surface-2:#16242f; --ink:#e5ecf1; --ink-2:#b2bfc9; --muted:#8fa0ac; --line:#223340; --line-2:#30485a;
+  --brand:#56aee6; --brand-ink:#8fcaf0; --brand-soft:#0f2f47;
+  --heat:#f0a35a; --heat-soft:#3b2716; --air:#5cc3e6;
+  --good:#6cc786; --good-bg:#11301c; --warn:#f2c35b; --warn-bg:#33290f; --serious:#f4a074; --serious-bg:#3a2014; --critical:#f28b8b; --critical-bg:#3b1717;
+  --zone:rgba(240,110,110,.15); --zone-line:#f07a7a; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 15.5px/1.75 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 72px;display:grid;gap:56px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(1.65rem,3.4vw,2.45rem);line-height:1.25;font-weight:700}
+h2{font-size:clamp(1.25rem,2.2vw,1.55rem);line-height:1.35;font-weight:700}
+h3{font-size:1.05rem;line-height:1.45;font-weight:600}
+p{margin:0}
+a{color:var(--brand-ink)}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+.num,.data{font-family:var(--f-data);font-weight:500;font-variant-numeric:tabular-nums}
+.eyebrow{font:500 .78rem/1.4 var(--f-data);letter-spacing:.08em;text-transform:uppercase;color:var(--brand-ink)}
+.lead{color:var(--ink-2);max-width:68ch}
+.muted{color:var(--muted)}
+small,.small{font-size:.86rem}
+
+/* masthead */
+.mast{display:grid;gap:18px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.mast-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mast-top svg{width:34px;height:34px;flex:none}
+.mast-top .eyebrow{margin:0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px 28px;margin:0}
+.meta div{min-width:0}
+.meta dt{font-size:.8rem;color:var(--muted)}
+.meta dd{margin:2px 0 0;font-weight:500}
+.notice{font-size:.88rem;color:var(--ink-2);background:var(--surface-2);border-radius:8px;padding:10px 14px}
+
+/* sections */
+.sec{display:grid;gap:22px}
+.sec-head{display:grid;gap:8px}
+.sec-head .eyebrow b{color:var(--ink);font-weight:500}
+
+/* verdict */
+.verdict{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(18px,3vw,30px);display:grid;gap:22px}
+.verdict-main{font-family:var(--f-display);font-size:clamp(1.12rem,2vw,1.38rem);line-height:1.6;font-weight:600;max-width:60ch}
+.verdict-main em{font-style:normal;color:var(--critical)}
+.verdict-main strong{color:var(--good)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.vcell{display:grid;gap:8px;align-content:start;padding:16px;border-radius:10px;background:var(--surface-2);min-width:0}
+.vcell .k{font-size:.8rem;color:var(--muted)}
+.vcell .big{font-family:var(--f-display);font-size:1.28rem;font-weight:700;line-height:1.35}
+.vcell p{font-size:.93rem;color:var(--ink-2)}
+
+/* chips */
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;line-height:1.4}
+.chip i{font-style:normal;font-size:.7rem}
+.chip-good{background:var(--good-bg);color:var(--good)}
+.chip-warn{background:var(--warn-bg);color:var(--warn)}
+.chip-serious{background:var(--serious-bg);color:var(--serious)}
+.chip-critical{background:var(--critical-bg);color:var(--critical)}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:0}
+.facts div{background:var(--surface);padding:14px 16px;min-width:0}
+.facts dt{font-size:.8rem;color:var(--muted)}
+.facts dd{margin:3px 0 0;font-size:.95rem}
+
+/* diagram */
+.xsec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.xsec{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 14px 12px;display:grid;gap:8px;min-width:0}
+.xsec-focus{border-color:var(--critical);box-shadow:0 0 0 1px var(--critical) inset}
+.xsec-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.xsec-head b{font-family:var(--f-display);font-weight:600}
+.xsec svg{width:100%;height:auto;max-width:100%;color:var(--ink)}
+.xsec figcaption{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.84rem;color:var(--ink-2);border-top:1px solid var(--line);padding-top:8px}
+.svg-lbl{font:600 13px var(--f-body);fill:var(--muted)}
+.svg-sm{font:500 11.5px var(--f-body);fill:var(--ink-2)}
+.svg-strong{fill:var(--critical);font-weight:700}
+.svg-sun{fill:var(--heat)}
+.svg-ray{stroke:var(--heat);stroke-width:2;stroke-linecap:round}
+.svg-glass{fill:var(--brand-soft);stroke:var(--brand);stroke-width:1.2}
+.svg-hot2{fill:var(--critical-bg);stroke:var(--critical)}
+.svg-lowe{stroke:var(--brand);stroke-width:2.5;stroke-dasharray:3 3}
+.svg-frame{fill:var(--line-2);stroke:var(--muted);stroke-width:1}
+.svg-heat{stroke:var(--heat);stroke-width:2.2;fill:none;stroke-linecap:round}
+.svg-heatfill{fill:var(--heat)}
+.svg-cavity{fill:var(--heat-soft)}
+.svg-curtain{stroke:var(--heat);stroke-width:2.2;fill:none}
+.svg-curtain-light{stroke:var(--muted)}
+.svg-wall{fill:var(--surface-2);stroke:var(--ink-2);stroke-width:1.2}
+.svg-seal{stroke:var(--ink-2);stroke-width:3}
+.svg-crack{stroke:var(--critical);stroke-width:2;fill:none;stroke-linejoin:round}
+.svg-leader{stroke:var(--muted);stroke-width:1}
+.svg-air{stroke:var(--air);stroke-width:2;fill:none;stroke-linecap:round}
+.svg-airfill{fill:var(--air)}
+.mech{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 28px}
+.mech p{font-size:.95rem;color:var(--ink-2)}
+.mech b{color:var(--ink)}
+
+/* range chart */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:clamp(14px,2.4vw,22px);display:grid;gap:16px;min-width:0}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{font:500 .88rem var(--f-body);color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+:root[data-theme="dark"] .seg button[aria-pressed="true"]{color:#06121b}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .seg button[aria-pressed="true"]{color:#06121b}}
+.rc{display:grid;grid-template-columns:minmax(7rem,13rem) 1fr 5.2rem;column-gap:12px;position:relative}
+.rc-row{display:contents}
+.rc-lab{font-size:.9rem;padding:9px 0;line-height:1.35;min-width:0}
+.rc-lab small{display:block;color:var(--muted);font-size:.76rem}
+.rc-track{position:relative;min-height:44px;background:linear-gradient(to right,transparent 0 var(--z),var(--zone) var(--z) 100%);border-left:1px solid var(--line-2)}
+.rc-track::after{content:"";position:absolute;top:0;bottom:0;left:var(--z);border-left:1.5px solid var(--zone-line)}
+.rc-row + .rc-row .rc-track{border-top:1px solid var(--line)}
+.rc-bar{position:absolute;top:50%;height:10px;margin-top:-5px;border-radius:5px;background:var(--brand);opacity:.38}
+.rc-dot{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 2px var(--surface)}
+.rc-hit{position:absolute;inset:0;cursor:default}
+.rc-val{font-size:.86rem;padding:9px 0;text-align:right;line-height:1.3}
+.rc-val small{display:block;color:var(--muted);font-size:.74rem}
+.rc-axis{grid-column:2;position:relative;height:26px;border-top:1px solid var(--line-2)}
+.rc-axis span{position:absolute;top:4px;transform:translateX(-50%);font:500 .74rem var(--f-data);color:var(--muted)}
+.rc-axis-lab{grid-column:2;font-size:.78rem;color:var(--muted);text-align:center}
+.rc-zone-lab{position:absolute;top:-22px;font-size:.76rem;color:var(--zone-line);font-weight:700;white-space:nowrap;transform:translateX(6px)}
+.rc-tip{position:absolute;z-index:3;pointer-events:none;background:var(--ink);color:var(--surface);font-size:.82rem;line-height:1.5;padding:8px 10px;border-radius:8px;max-width:260px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.rc-tip b{font-family:var(--f-data);font-weight:500}
+.chart-note{font-size:.84rem;color:var(--muted)}
+
+/* tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:640px}
+th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--ink-2);background:var(--surface-2);font-size:.82rem}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;font-family:var(--f-data);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.focus td{background:var(--critical-bg)}
+tr.focus td:first-child{font-weight:700}
+
+/* probability */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.ptile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:6px;align-content:start;min-width:0}
+.ptile .k{font-size:.8rem;color:var(--muted)}
+.ptile .v{font-family:var(--f-display);font-size:1.6rem;font-weight:700;line-height:1.2}
+.ptile .v small{font-size:.9rem;font-weight:500;color:var(--ink-2)}
+.ptile p{font-size:.88rem;color:var(--ink-2)}
+.ptile.hot{border-color:var(--critical)}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.calc label{display:grid;gap:4px;font-size:.82rem;color:var(--muted)}
+.calc select,.calc input{font:500 .95rem var(--f-body);color:var(--ink);background:var(--surface);border:1px solid var(--line-2);border-radius:8px;padding:8px 10px;width:100%}
+.calc-out{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.calc-out div{background:var(--surface-2);border-radius:10px;padding:12px 14px;min-width:0}
+.calc-out .k{font-size:.78rem;color:var(--muted)}
+.calc-out .v{font-family:var(--f-display);font-size:1.25rem;font-weight:700}
+.calc-out .s{font-size:.8rem;color:var(--ink-2)}
+.bench{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.bench div{border-top:2px solid var(--line-2);padding-top:10px;min-width:0}
+.bench b{display:block;font-family:var(--f-display);font-size:1.05rem}
+.bench p{font-size:.88rem;color:var(--ink-2)}
+
+/* legal flow */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch}
+.fnode{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:6px;align-content:start;min-width:0}
+.fnode .role{font-size:.78rem;color:var(--muted)}
+.fnode b{font-family:var(--f-display);font-size:1.05rem}
+.fnode p{font-size:.88rem;color:var(--ink-2)}
+.fnode .law{font:500 .78rem var(--f-data);color:var(--brand-ink)}
+.fnode.first{border-color:var(--brand);box-shadow:0 0 0 1px var(--brand) inset}
+.farrow{display:grid;place-items:center;font-size:.76rem;color:var(--muted);text-align:center;min-width:64px}
+.farrow span{display:block}
+.farrow svg{width:44px;height:14px;color:var(--ink-2)}
+.recourse{display:flex;gap:10px;align-items:flex-start;background:var(--brand-soft);border-radius:10px;padding:12px 14px;font-size:.9rem}
+.recourse b{color:var(--brand-ink)}
+@media (max-width:820px){
+  .flow{grid-template-columns:1fr}
+  .farrow{min-height:34px}
+  .farrow svg{transform:rotate(90deg)}
+}
+.laws{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:0 14px}
+details[open]{padding-bottom:12px}
+summary{cursor:pointer;padding:12px 0;font-weight:600;list-style-position:outside}
+details p,details li{font-size:.9rem;color:var(--ink-2)}
+details blockquote{margin:6px 0 8px;padding:8px 12px;border-left:3px solid var(--line-2);background:var(--surface-2);font-size:.88rem;color:var(--ink-2);border-radius:0 6px 6px 0}
+
+/* rules / fire */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:6px;align-content:start;min-width:0}
+.rule p{font-size:.9rem;color:var(--ink-2)}
+.rule .law{font:500 .76rem var(--f-data);color:var(--brand-ink)}
+
+/* decision */
+.decide{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.dcol{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:10px;align-content:start;min-width:0}
+.dcol h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.dcol ul{margin:0;padding-left:1.1em;display:grid;gap:6px;font-size:.92rem;color:var(--ink-2)}
+
+/* clauses */
+.clauses{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.clause{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.clause-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.clause-top b{font-family:var(--f-display)}
+.clause p{font-size:.9rem;color:var(--ink-2)}
+.copy{font:500 .78rem var(--f-body);border:1px solid var(--line-2);background:var(--surface-2);color:var(--ink-2);border-radius:6px;padding:4px 10px;cursor:pointer;white-space:nowrap}
+.copy.done{color:var(--good);border-color:var(--good)}
+
+/* checklist */
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.phase{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
+.phase h3{margin-bottom:8px}
+.phase ol{margin:0;padding-left:1.2em;display:grid;gap:7px;font-size:.92rem;color:var(--ink-2)}
+.phase.urgent{border-color:var(--critical)}
+
+.refs{margin:0;padding-left:1.3em;display:grid;gap:6px;font-size:.88rem;color:var(--ink-2)}
+.refs li{overflow-wrap:anywhere}
+.foot{border-top:1px solid var(--line);padding-top:18px;font-size:.84rem;color:var(--muted);display:grid;gap:6px}
+@media (prefers-reduced-motion:no-preference){.seg button,.copy{transition:background .15s,color .15s,border-color .15s}}
+@media (max-width:560px){
+  body{font-size:15px}
+  .rc{grid-template-columns:6.4rem 1fr 3.9rem;column-gap:8px}
+  .rc-lab{font-size:.8rem}
+  .rc-val{font-size:.78rem}
+}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="mast-top">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 2 L29.9 17.6 L46.4 18.4 L33.5 28.7 L37.9 44.6 L24 35.4 L10.1 44.6 L14.5 28.7 L1.6 18.4 L18.1 17.6 Z" fill="#1a8fd0"/><text x="24" y="29.5" text-anchor="middle" font-family="IBM Plex Sans KR, sans-serif" font-size="15" font-weight="700" fill="#ffffff">KS</text></svg>
+    <p class="eyebrow">K STAR TOWER · 9F · 창호 차광 공사 사전 검토</p>
+  </div>
+  <h1>9층 창호 커튼·밀폐 가벽 시공 검토<br><span class="muted" style="font-weight:600;font-size:.62em">유리 열파손 위험, 깨질 확률, 사고 시 배상 책임</span></h1>
+  <dl class="meta">
+    <div><dt>소재지</dt><dd>광산구 장신로 144 (수완동 1430)</dd></div>
+    <div><dt>대상</dt><dd>9층 동·서측 창호 · 로이 복층유리</dd></div>
+    <div><dt>입점 변경</dt><dd>웅진프라임 수완학원 → 결이고은에스테틱 (예정)</dd></div>
+    <div><dt>검토 가정</dt><dd>창 안쪽 커튼 + 창틀에서 밀폐 가벽 (공기순환 없음)</dd></div>
+    <div><dt>작성일</dt><dd class="num">2026-10-12</dd></div>
+  </dl>
+  <p class="notice">유리 사양(일반·배강도·강화)은 아직 확인되지 않았습니다. 이 검토는 <b>일반 판유리</b>를 기본으로 계산하고, 배강도·강화일 때의 결과를 함께 적었습니다. 법률 부분은 일반적인 해석이며 개별 사건의 법률자문을 대신하지 않습니다.</p>
+</header>
+
+<!-- 1 결론 -->
+<section class="sec" id="verdict">
+  <div class="sec-head"><p class="eyebrow"><b>1</b> · 결론</p><h2>한 줄 판단</h2></div>
+  <div class="verdict">
+    <p class="verdict-main">일반 판유리라면 <em>커튼 + 밀폐 가벽은 승인하지 않는 편이 맞습니다.</em> 같은 가벽이라도 <strong>유리에서 띄우고 위·아래에 통기구를 내면</strong> 열파손 위험은 현재 수준으로 내려갑니다.</p>
+    <div class="vgrid">
+      <div class="vcell">
+        <span class="k">무엇이 깨지나</span>
+        <span class="big">실내측 유리</span>
+        <p>가벽 안에 열이 갇혀 유리 중앙이 <span class="num">60~100℃</span>까지 오르고, 프레임에 묻힌 가장자리는 덜 데워져 가장자리부터 금이 갑니다. 실외측 유리는 온도차가 <span class="num">17K</span> 이하라 열 때문에 깨질 가능성은 낮습니다.</p>
+      </div>
+      <div class="vcell">
+        <span class="k">깨질 확률 (일반유리, 첫 1년)</span>
+        <span class="big">1장당 약 0.7~4.5%</span>
+        <p>동·서측 창 20장이면 <b>1장 이상 금이 갈 확률 약 8~45%</b>, 조건이 불리하면 80%까지 올라갑니다. 배강도유리는 0.01% 안팎, 강화유리는 사실상 0입니다.</p>
+      </div>
+      <div class="vcell">
+        <span class="k">보행자가 다치면</span>
+        <span class="big">1차 임차인, 최종 보증 건물주</span>
+        <p>창을 점유·관리하는 임차인이 먼저 배상합니다(민법 758조 1항). 임차인이 주의의무를 다했다고 증명하면 건물주가 과실이 없어도 배상하고, 이후 원인 제공자에게 돌려받습니다(같은 조 3항).</p>
+      </div>
+      <div class="vcell">
+        <span class="k">먼저 할 일</span>
+        <span class="big">유리 종류부터 확인</span>
+        <p>일반유리면 밀폐 가벽 불허, 통기형으로 바꿔 조건부 승인. 함께 피난기구(완강기) 창·무창층 여부를 확인하고, 특약과 배상책임보험을 계약에 넣습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 현장 -->
+<section class="sec" id="site">
+  <div class="sec-head"><p class="eyebrow"><b>2</b> · 현장 조건</p><h2>위험을 키우는 조건과 줄이는 조건</h2></div>
+  <dl class="facts">
+    <div><dt>위치</dt><dd>수완지구 중심 상업가. 건물 앞 보행로·육교·자전거도로·주차 차량이 창 아래 낙하 범위 안에 있음</dd></div>
+    <div><dt>높이</dt><dd>9층 창 높이 약 <span class="num">28~32m</span> (층고 3.3~3.6m 가정)</dd></div>
+    <div><dt>방향</dt><dd>동측은 아침, 서측은 오후에 직사광. 두 면 모두 열파손이 잘 일어나는 방위</dd></div>
+    <div><dt>유리</dt><dd>로이 복층유리 (예: 6mm + 공기층 12mm + 6mm). 열처리 여부 미확인</dd></div>
+    <div><dt>시공 계획</dt><dd>창 안쪽 커튼, 창틀 라인에서 가벽으로 막음. 위·아래가 막혀 공기순환 없음</dd></div>
+    <div><dt>떨어질 때의 에너지</dt><dd>유리 조각 10×10cm(약 150g)도 30m에서 떨어지면 공기저항을 빼고 약 <span class="num">24m/s · 44J</span>. 6mm 판유리 한 장(1.2×1.5m)은 약 <span class="num">27kg</span></dd></div>
+  </dl>
+</section>
+
+<!-- 3 원리 -->
+<section class="sec" id="mechanism">
+  <div class="sec-head"><p class="eyebrow"><b>3</b> · 왜 깨지나</p><h2>가운데는 뜨겁고 가장자리는 차가울 때 유리가 갈라집니다</h2>
+    <p class="lead">아래 수치는 봄철 맑은 아침 동측 창 기준 계산 중앙값입니다. 이때가 밀폐 가벽안에서 가장 불리한 조건입니다.</p></div>
+  <div class="xsec-grid">
+    <figure class="xsec">
+      <div class="xsec-head"><span class="chip chip-good"><i aria-hidden="true">●</i>낮음</span><b>현재 상태</b></div>
+      <svg viewBox="0 0 300 300" role="img" aria-label="현재 상태: 실내측 유리가 실내 공기로 열을 내보내 거의 데워지지 않는다">
+        <defs>
+          <marker id="sunA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="svg-sun"/></marker>
+          <marker id="heatA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="svg-heatfill"/></marker>
+        </defs>
+        <text x="36" y="22" class="svg-lbl" text-anchor="middle">실외</text>
+        <text x="238" y="22" class="svg-lbl" text-anchor="middle">실내</text>
+        <circle cx="34" cy="64" r="13" class="svg-sun"/>
+        <line x1="44" y1="84" x2="94" y2="130" class="svg-ray" marker-end="url(#sunA)"/>
+        <line x1="40" y1="110" x2="94" y2="170" class="svg-ray" marker-end="url(#sunA)"/>
+        <rect x="96" y="56" width="9" height="200" class="svg-glass"/>
+        <rect x="129" y="56" width="9" height="200" class="svg-glass"/>
+        <line x1="106" y1="72" x2="106" y2="240" class="svg-lowe"/>
+        <rect x="86" y="44" width="62" height="26" rx="2" class="svg-frame"/>
+        <rect x="86" y="242" width="62" height="26" rx="2" class="svg-frame"/>
+        <line x1="146" y1="150" x2="206" y2="150" class="svg-heat" marker-end="url(#heatA)"/>
+        <text x="212" y="146" class="svg-sm">실내로</text>
+        <text x="212" y="160" class="svg-sm">열이 빠짐</text>
+        <text x="117" y="288" class="svg-sm" text-anchor="middle">프레임 속 가장자리</text>
+      </svg>
+      <figcaption><span class="num">유리 중앙 ≈ 23℃</span><span class="num">중앙–가장자리 ≈ 11K</span></figcaption>
+    </figure>
+    <figure class="xsec xsec-focus">
+      <div class="xsec-head"><span class="chip chip-critical"><i aria-hidden="true">■</i>높음</span><b>검토안: 커튼 + 밀폐 가벽</b></div>
+      <svg viewBox="0 0 300 300" role="img" aria-label="커튼과 밀폐 가벽안: 유리를 통과한 햇빛이 커튼과 가벽에 흡수되는데 공기가 순환하지 않아 열이 갇히고, 실내측 유리 중앙은 뜨거워지는 반면 프레임 속 가장자리는 덜 데워져 가장자리에서 균열이 시작된다">
+        <defs>
+          <marker id="sunB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="svg-sun"/></marker>
+          <marker id="heatB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="svg-heatfill"/></marker>
+        </defs>
+        <text x="36" y="22" class="svg-lbl" text-anchor="middle">실외</text>
+        <text x="266" y="22" class="svg-lbl" text-anchor="middle">실내</text>
+        <circle cx="34" cy="64" r="13" class="svg-sun"/>
+        <line x1="44" y1="84" x2="94" y2="130" class="svg-ray" marker-end="url(#sunB)"/>
+        <line x1="40" y1="110" x2="94" y2="170" class="svg-ray" marker-end="url(#sunB)"/>
+        <rect x="138" y="44" width="78" height="224" class="svg-cavity"/>
+        <rect x="96" y="56" width="9" height="200" class="svg-glass"/>
+        <rect x="129" y="56" width="9" height="200" class="svg-glass svg-hot2"/>
+        <line x1="106" y1="72" x2="106" y2="240" class="svg-lowe"/>
+        <path d="M176 72 q6 12 0 24 q-6 12 0 24 q6 12 0 24 q-6 12 0 24 q6 12 0 24 q-6 12 0 24 q6 12 0 24" class="svg-curtain"/>
+        <rect x="216" y="40" width="14" height="232" class="svg-wall"/>
+        <line x1="148" y1="44" x2="216" y2="44" class="svg-seal"/>
+        <line x1="148" y1="268" x2="216" y2="268" class="svg-seal"/>
+        <rect x="86" y="44" width="62" height="26" rx="2" class="svg-frame"/>
+        <rect x="86" y="242" width="62" height="26" rx="2" class="svg-frame"/>
+        <path d="M198 118 C 210 132, 206 152, 146 158" class="svg-heat" marker-end="url(#heatB)"/>
+        <polyline points="133,242 130,232 136,224 131,214 135,205" class="svg-crack"/>
+        <text x="177" y="36" class="svg-sm" text-anchor="middle">위·아래 막힘</text>
+        <text x="236" y="120" class="svg-sm">가벽</text>
+        <text x="236" y="176" class="svg-sm">갇힌 열이</text>
+        <text x="236" y="190" class="svg-sm">유리로 되돌아옴</text>
+        <line x1="140" y1="222" x2="166" y2="270" class="svg-leader"/>
+        <text x="166" y="288" class="svg-sm svg-strong" text-anchor="middle">가장자리에서 균열 시작</text>
+      </svg>
+      <figcaption><span class="num">유리 중앙 ≈ 77℃ (여름 오후 ≈ 100℃)</span><span class="num">중앙–가장자리 ≈ 39K (상위 10% 60K)</span></figcaption>
+    </figure>
+    <figure class="xsec">
+      <div class="xsec-head"><span class="chip chip-good"><i aria-hidden="true">●</i>낮음</span><b>대안: 통기형 가벽</b></div>
+      <svg viewBox="0 0 300 300" role="img" aria-label="통기형 가벽 대안: 가벽 아래로 실내 공기가 들어와 데워진 뒤 위로 빠져나가 열을 실내로 실어 나르므로 유리가 크게 데워지지 않는다">
+        <defs>
+          <marker id="sunC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="svg-sun"/></marker>
+          <marker id="airC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="svg-airfill"/></marker>
+        </defs>
+        <text x="36" y="22" class="svg-lbl" text-anchor="middle">실외</text>
+        <text x="266" y="22" class="svg-lbl" text-anchor="middle">실내</text>
+        <circle cx="34" cy="64" r="13" class="svg-sun"/>
+        <line x1="44" y1="84" x2="94" y2="130" class="svg-ray" marker-end="url(#sunC)"/>
+        <line x1="40" y1="110" x2="94" y2="170" class="svg-ray" marker-end="url(#sunC)"/>
+        <rect x="96" y="56" width="9" height="200" class="svg-glass"/>
+        <rect x="129" y="56" width="9" height="200" class="svg-glass"/>
+        <line x1="106" y1="72" x2="106" y2="240" class="svg-lowe"/>
+        <path d="M176 72 q6 12 0 24 q-6 12 0 24 q6 12 0 24 q-6 12 0 24 q6 12 0 24 q-6 12 0 24 q6 12 0 24" class="svg-curtain svg-curtain-light"/>
+        <rect x="216" y="66" width="14" height="180" class="svg-wall"/>
+        <rect x="86" y="44" width="62" height="26" rx="2" class="svg-frame"/>
+        <rect x="86" y="242" width="62" height="26" rx="2" class="svg-frame"/>
+        <path d="M268 262 C 236 262, 190 262, 160 236" class="svg-air" marker-end="url(#airC)"/>
+        <line x1="158" y1="200" x2="158" y2="100" class="svg-air" marker-end="url(#airC)"/>
+        <path d="M160 74 C 190 50, 236 50, 268 50" class="svg-air" marker-end="url(#airC)"/>
+        <text x="236" y="40" class="svg-sm">위 통기구</text>
+        <text x="236" y="286" class="svg-sm">아래 통기구</text>
+        <text x="236" y="150" class="svg-sm">가벽</text>
+        <text x="236" y="164" class="svg-sm">(유리와 띄움)</text>
+      </svg>
+      <figcaption><span class="num">유리 중앙 ≈ 32℃</span><span class="num">중앙–가장자리 ≈ 16K</span></figcaption>
+    </figure>
+  </div>
+  <div class="mech">
+    <p><b>원리.</b> 유리는 데워지면 늘어납니다. 햇빛을 받는 중앙은 뜨거워지는데 프레임에 1.5cm 안팎 묻힌 가장자리는 햇빛을 못 받아 차갑습니다. 중앙이 늘어나며 가장자리를 잡아당기고, 일반 판유리는 이 온도차가 약 <b>35~40K</b>(절단면 상태에 따라)를 넘으면 가장자리의 미세한 흠에서 금이 가기 시작합니다. 배강도는 약 100K, 강화는 약 200K까지 견딥니다(Saint-Gobain 기술자료). 가장자리가 손상돼 있으면 강도가 최대 절반까지 떨어집니다(3M).</p>
+    <p><b>밀폐 가벽이 위험한 이유.</b> 유리를 통과한 햇빛이 커튼과 가벽에 흡수된 뒤 빠져나갈 길이 없어 그 열이 유리로 되돌아옵니다. 커튼월 건물의 불투명 구간(스팬드럴)과 같은 조건입니다. 미국유리협회 자료는 이런 공간의 실내측 유리가 <b>110℃ 이상, 중앙–가장자리 72K 이상</b>까지 오른다고 보고하며, Vitro·Pilkington은 스팬드럴 유리를 배강도 이상으로 하도록 합니다. 일본 NSG도 "파티션을 유리에 밀착해 설치하면 열깨짐의 원인이 되므로 피하라"고 안내합니다.</p>
+    <p><b>가장 위험한 때.</b> 동측은 늦가을~봄의 맑고 쌀쌀한 아침입니다. 밤새 식은 프레임은 차가운데 유리 중앙만 빠르게 데워집니다. 해외·일본 자료 모두 열깨짐이 가장 많은 때를 "겨울철 맑은 날 오전"으로 꼽습니다. 서측은 여름 오후에 유리 온도가 가장 높고(100℃ 안팎), 겨울 오후에도 온도차가 큽니다.</p>
+    <p><b>함께 생기는 문제.</b> 가벽 안이 반복해서 고온이 되면 복층유리 둘레의 밀봉재가 빨리 상해 유리 사이에 김이 서립니다. 겨울에는 가벽 안 유리면에 결로가 생겨 커튼·가벽에 곰팡이가 피기 쉽고, 피부관리실의 습기는 이를 키웁니다. 무엇보다 금이 가도 가벽에 가려 보이지 않습니다.</p>
+  </div>
+</section>
+
+<!-- 4 온도 계산 -->
+<section class="sec" id="calc-temp">
+  <div class="sec-head"><p class="eyebrow"><b>4</b> · 온도 계산</p><h2>시공안별 유리 중앙–가장자리 온도차 추정</h2>
+    <p class="lead">막대는 계산 결과의 하위 10%~상위 10% 범위, 점은 중앙값입니다. 붉은 영역은 일반 판유리 허용 온도차(40K)를 넘는 구간입니다.</p></div>
+  <div class="panel">
+    <div class="seg" role="group" aria-label="계산 조건 선택">
+      <button type="button" data-season="spring_east" aria-pressed="true">봄 · 동측 아침</button>
+      <button type="button" data-season="summer_west" aria-pressed="false">여름 · 서측 오후</button>
+      <button type="button" data-season="winter_west" aria-pressed="false">겨울 · 서측 오후</button>
+    </div>
+    <div class="rc" id="rc" aria-describedby="rc-note"></div>
+    <p class="chart-note" id="rc-note">배강도유리 허용치(100K)와 강화유리 허용치(200K)는 축 바깥에 있습니다. 모든 시공안이 이 두 유리에서는 여유가 큽니다. 막대에 마우스를 올리거나 탭하면 유리 중앙 온도가 함께 보입니다.</p>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>시공안</th><th class="n">유리 중앙 온도</th><th class="n">온도차 중앙값</th><th class="n">온도차 범위</th><th class="n">40K 초과 비율</th><th class="n">실외측 유리 온도차(상위 10%)</th></tr></thead>
+      <tbody id="rc-table"></tbody>
+    </table>
+  </div>
+  <details>
+    <summary>계산 방법과 가정 (펼치기)</summary>
+    <p>유리 한 장 단위로 실외측 유리, 실내측 유리, 커튼·가벽면의 열평형을 풀었습니다(정상상태 1차원). 일사량·외기온·실내온도·바람·로이 코팅 위치(2면/3면)·커튼 흡수율·가벽 단열·프레임 열특성을 현실 범위 안에서 무작위로 4,000번 바꿔 계산한 분포입니다.</p>
+    <ul>
+      <li>일사량(수직면): 봄 동측 600~780 W/㎡, 여름 서측 650~800, 겨울 서측 470~620</li>
+      <li>외기온: 봄 아침 2~9℃, 여름 30~36℃, 겨울 −3~5℃ · 실내 15~28℃</li>
+      <li>로이 복층유리: 일사투과 32~55%, 실외측 유리 흡수 10~36%</li>
+      <li>커튼·가벽면 일사흡수 40~85%, 가벽 열관류 0.6~2.4 W/㎡K, 통기형은 통기에 의한 열제거 3~8 W/㎡K 추가</li>
+      <li>가장자리 온도: 프레임이 실내 쪽(가벽 안 공기)에 40~80% 결합한다고 보고, 아침에는 프레임이 늦게 데워지는 지연을 반영</li>
+    </ul>
+    <p>열파손 표준 계산법인 ASTM E2431은 커튼·가벽 같은 열 갇힘 조건과 로이 코팅 유리를 다루지 않아 이 사안에 그대로 쓸 수 없습니다. 그래서 열평형을 직접 계산했습니다. 일본식 계산법(JASS17 기반)은 두꺼운 커튼이 유리에서 10cm 안쪽이면 열응력을 1.5배, 10cm 이상이면 1.3배로 보는데, 밀폐 가벽은 이보다 불리합니다. 부분 그늘(인접 건물·창틀 그림자), 시공 중 가장자리 흠, 급격한 일사 변화는 넣지 않았습니다. 이 요인들은 온도차를 더 키우는 쪽이라 실제 위험은 표보다 높을 수 있습니다. 정밀 판단은 유리 제조사 또는 창호 설계자의 열파손 검토로 확인해야 합니다.</p>
+  </details>
+</section>
+
+<!-- 5 확률 -->
+<section class="sec" id="probability">
+  <div class="sec-head"><p class="eyebrow"><b>5</b> · 깨질 확률</p><h2>"몇 %냐"에 대한 답</h2>
+    <p class="lead">이 조합(로이 복층유리 + 커튼 + 밀폐 가벽)만 따로 집계한 공식 통계는 없습니다. 그래서 위의 온도차 분포에 유리 강도의 통계 분포를 적용해 추정했습니다. 범위의 아래쪽은 낙관적 가정, 위쪽은 보수적 가정입니다.</p></div>
+  <div class="pgrid">
+    <div class="ptile hot"><span class="k">밀폐 가벽 · 일반유리 · 1장당</span><span class="v">0.7~4.5% <small>동측</small></span><p>서측 0.2~1.3%. 부분 그늘·가장자리 흠 등 불리한 조건을 더하면 동측 약 12%.</p></div>
+    <div class="ptile hot"><span class="k">밀폐 가벽 · 동·서 20장 중 1장 이상</span><span class="v">약 8~45%</span><p>불리한 조건이면 약 80%. 창 수를 아래 계산기에 넣으면 실제 값이 나옵니다.</p></div>
+    <div class="ptile"><span class="k">통기형 가벽·블라인드 · 일반유리</span><span class="v">0.01% 이하 <small>1장당</small></span><p>현재 상태와 비슷한 수준. 20장 기준 0.1% 안팎.</p></div>
+    <div class="ptile"><span class="k">배강도 / 강화유리라면</span><span class="v">0.01% / ≈0</span><p>밀폐 가벽이어도 열 때문에 깨질 확률은 매우 낮습니다. 유리 확인이 결론을 바꾸는 이유입니다.</p></div>
+  </div>
+
+  <div class="panel">
+    <h3>창 수로 직접 계산</h3>
+    <form class="calc" id="calc" onsubmit="return false">
+      <label for="c-scn">시공안
+        <select id="c-scn">
+          <option value="wall_closed" selected>커튼 + 밀폐 가벽 (검토안)</option>
+          <option value="wall_vented">통기형 가벽 (대안)</option>
+          <option value="blind_vented">통기형 블라인드·커튼 (대안)</option>
+          <option value="film_black">실내측 암막필름 (비교)</option>
+          <option value="base">현재 상태</option>
+        </select></label>
+      <label for="c-glass">유리 종류
+        <select id="c-glass">
+          <option value="annealed" selected>일반(풀림) 또는 모름</option>
+          <option value="hs">배강도</option>
+          <option value="ft">강화</option>
+        </select></label>
+      <label for="c-ne">동측 창 장수 <input id="c-ne" type="number" min="0" max="300" value="10" inputmode="numeric"></label>
+      <label for="c-nw">서측 창 장수 <input id="c-nw" type="number" min="0" max="300" value="10" inputmode="numeric"></label>
+    </form>
+    <div class="calc-out" aria-live="polite">
+      <div><span class="k">1장당 (동측)</span><div class="v" id="o-e">-</div><span class="s" id="o-e2"></span></div>
+      <div><span class="k">1장당 (서측)</span><div class="v" id="o-w">-</div><span class="s" id="o-w2"></span></div>
+      <div><span class="k">층 전체 1장 이상 금 갈 확률</span><div class="v" id="o-f">-</div><span class="s" id="o-f2"></span></div>
+      <div><span class="k">예상 균열 장수</span><div class="v" id="o-n">-</div><span class="s">표준 범위 기준 기댓값</span></div>
+    </div>
+    <p class="chart-note">창 장수 10/10은 예시값입니다. 실제 9층 동·서측 유리 장수로 바꿔 넣으세요. 확률은 가장 불리한 계절을 한 번 겪는 첫 1년 기준이며, 계약기간이 길수록 누적 위험은 커집니다.</p>
+  </div>
+
+  <div class="panel">
+    <h3>계산의 근거가 된 객관 기준</h3>
+    <div class="bench">
+      <div><b>허용 온도차 35~40K / 100K / 200K</b><p>일반 판유리(절단면 35K, 연마면 40~45K)·배강도·강화유리의 설계값(Saint-Gobain TS-3A). 같은 자료는 35K를 파손확률 약 0.2% 수준으로 설명합니다. 이 검토는 일반유리 기준을 40K로 잡았습니다.</p></div>
+      <div><b>설계 파손확률 1,000장 중 8장</b><p>ASTM E1300의 허용 파손확률(0.8%)이며, Pilkington·Vitro도 열응력 검토에서 "1,000장 중 8장 초과"를 위험 기준으로 씁니다. 허용 온도차에서의 파손확률을 0.1%(낙관)~0.8%(보수)로 놓았습니다.</p></div>
+      <div><b>유리 강도 분포 (와이블 계수 7)</b><p>같은 유리라도 흠의 크기에 따라 강도가 장마다 다릅니다. 유리 가장자리 강도 시험에서 보고된 값(6.5~12) 범위 안의 7을 적용했습니다.</p></div>
+      <div><b>실외측 유리는 온도차 17K 이하</b><p>어느 시공안이든 실외측 유리의 열 파손확률은 0.001% 미만. 열파손이 곧바로 보행로 낙하로 이어질 가능성은 낮다는 뜻입니다.</p></div>
+    </div>
+  </div>
+  <details>
+    <summary>그래도 보행자 쪽 위험을 0으로 볼 수 없는 이유</summary>
+    <ul>
+      <li>가벽 안이 60~100℃가 되면 복층유리 속 공기가 팽창해 두 장이 모두 휘고 밀봉재가 상합니다. Pilkington은 스팬드럴 조건에서 실외측 유리도 배강도로 하도록 권하는데, 실외측 유리까지 영향을 받을 수 있다는 뜻입니다.</li>
+      <li>금 간 유리를 가벽 뒤에 방치하면 바람·진동으로 균열이 커질 수 있고, 교체 작업 중에도 파편이 떨어질 수 있습니다.</li>
+      <li>열 말고도 강풍·충격·노후 밀봉재·강화유리 자연파손 같은 원인이 있습니다. 이런 원인은 임차인 공사와 무관하게 건물주가 관리할 몫입니다.</li>
+      <li>9층 높이에서는 작은 조각도 사람을 크게 다치게 할 수 있어, 확률이 낮아도 배상 규모는 커집니다.</li>
+    </ul>
+  </details>
+</section>
+
+<!-- 6 책임 -->
+<section class="sec" id="liability">
+  <div class="sec-head"><p class="eyebrow"><b>6</b> · 손해배상 책임</p><h2>보행자가 다치면 누가 배상하나</h2>
+    <p class="lead">건물 유리는 민법상 '공작물'입니다. 공작물의 설치·보존에 하자가 있어 남이 다치면 점유자가 먼저, 점유자가 면책되면 소유자가 책임집니다. 커튼·밀폐 가벽은 임차인이 임차 구역 안에 설치한 것이므로 하자의 원인은 임차인 쪽에 있습니다.</p></div>
+  <div class="flow">
+    <div class="fnode"><span class="role">청구하는 사람</span><b>다친 보행자</b><p>임차인·건물주·시공사를 함께 상대로 청구할 수 있습니다.</p></div>
+    <div class="farrow"><svg viewBox="0 0 44 14" aria-hidden="true"><line x1="0" y1="7" x2="36" y2="7" stroke="currentColor" stroke-width="1.6"/><path d="M34 2 L44 7 L34 12 z" fill="currentColor"/></svg><span>1차 청구</span></div>
+    <div class="fnode first"><span class="role">1차 책임</span><b>임차인 (점유자)</b><p>창을 사실상 관리하는 점유자로서 배상. 면하려면 '손해 방지에 필요한 주의를 다했다'는 것을 임차인이 증명해야 합니다.</p><span class="law">민법 758조 1항 본문 · 750조</span></div>
+    <div class="farrow"><svg viewBox="0 0 44 14" aria-hidden="true"><line x1="0" y1="7" x2="36" y2="7" stroke="currentColor" stroke-width="1.6"/><path d="M34 2 L44 7 L34 12 z" fill="currentColor"/></svg><span>임차인 면책 시</span></div>
+    <div class="fnode"><span class="role">2차 책임</span><b>건물주 (소유자)</b><p>과실이 없어도 배상(무과실책임). 외벽·창호 자체의 노후·시공 하자는 처음부터 건물주 몫입니다.</p><span class="law">민법 758조 1항 단서 · 623조</span></div>
+  </div>
+  <div class="recourse"><span aria-hidden="true">↩</span><p><b>구상.</b> 먼저 배상한 쪽은 원인을 만든 사람에게 돌려받습니다(민법 758조 3항). 건물주가 배상했다면 임차인과 시공업체에, 임차인이 배상했다면 위험을 알리지 않고 시공한 업체에 청구합니다. 시공업체는 보행자에게 직접 책임질 수도 있고, 여럿이 함께 책임지면 연대책임입니다(750조·760조).</p></div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>상황</th><th>보행자에게 먼저 배상</th><th>최종 부담</th><th>건물주가 챙길 점</th></tr></thead>
+      <tbody>
+        <tr class="focus"><td>임차인이 승인 없이 밀폐 가벽 시공</td><td>임차인</td><td>임차인 (+시공업체)</td><td>계약 제8조 위반. 건물주가 먼저 물어줬다면 전액 구상. 즉시 원상복구 요구</td></tr>
+        <tr><td>건물주가 조건 없이 승인</td><td>임차인. 임차인이 "건물주 승인을 받았다"며 주의의무를 다했다고 다투면 건물주</td><td>나눠서 부담할 가능성. 위험을 알고 승인했다면 건물주 몫이 생김</td><td>조건 없는 승인은 피하기</td></tr>
+        <tr><td>조건부 승인(열파손 검토·통기·보험) 후 임차인이 조건 위반</td><td>임차인</td><td>임차인</td><td>특약에 조건과 위반 책임을 적어 두면 구상 근거가 분명</td></tr>
+        <tr><td>조건을 다 지켰는데도 제품·시공 결함으로 파손</td><td>임차인 또는 건물주</td><td>시공업체·제조사</td><td>시공업체 하자보증과 보험 확인</td></tr>
+        <tr><td>공사와 무관한 파손 (강풍, 노후 밀봉재, 강화유리 자연파손)</td><td>건물주</td><td>건물주</td><td>임차인이 균열을 보고도 알리지 않아 커졌다면 임차인 일부 책임(임차인 통지의무, 민법 634조)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="laws">
+    <details>
+      <summary>민법 제758조 (공작물등의 점유자, 소유자의 책임)</summary>
+      <blockquote>① 공작물의 설치 또는 보존의 하자로 인하여 타인에게 손해를 가한 때에는 공작물점유자가 손해를 배상할 책임이 있다. 그러나 점유자가 손해의 방지에 필요한 주의를 해태하지 아니한 때에는 그 소유자가 손해를 배상할 책임이 있다.<br>③ 전2항의 경우에 점유자 또는 소유자는 그 손해의 원인에 대한 책임 있는 자에 대하여 구상권을 행사할 수 있다.</blockquote>
+      <p>판례는 '하자'를 공작물이 용도에 따라 통상 갖추어야 할 안전성을 갖추지 못한 상태로 보고, 위험성에 비례한 방호조치를 했는지로 판단합니다. 유리 제조사가 경고하는 밀폐 조건을 알고도 시공했다면 안전성 결여로 볼 여지가 큽니다.</p>
+    </details>
+    <details>
+      <summary>민법 제750조·제760조 (불법행위·공동불법행위)</summary>
+      <blockquote>제750조 고의 또는 과실로 인한 위법행위로 타인에게 손해를 가한 자는 그 손해를 배상할 책임이 있다.<br>제760조 ① 수인이 공동의 불법행위로 타인에게 손해를 가한 때에는 연대하여 그 손해를 배상할 책임이 있다.</blockquote>
+      <p>위험을 알면서 밀폐 시공을 지시한 임차인, 위험을 알리지 않은 시공업체가 대상입니다.</p>
+    </details>
+    <details>
+      <summary>민법 제623조·제634조 (임대인 유지의무, 임차인 통지의무)</summary>
+      <blockquote>제623조 임대인은 목적물을 임차인에게 인도하고 계약존속중 그 사용, 수익에 필요한 상태를 유지하게 할 의무를 부담한다.<br>제634조 임차물의 수리를 요하거나 임차물에 대하여 권리를 주장하는 자가 있는 때에는 임차인은 지체없이 임대인에게 이를 통지하여야 한다. 그러나 임대인이 이미 이를 안 때에는 그러하지 아니하다.</blockquote>
+    </details>
+    <details>
+      <summary>형사 책임 (형법 제268조)</summary>
+      <blockquote>업무상과실 또는 중대한 과실로 사람을 사망이나 상해에 이르게 한 자는 5년 이하의 금고 또는 2천만원 이하의 벌금에 처한다.</blockquote>
+      <p>낙하물로 사람이 다치면 위험을 알고도 방치한 영업주·관리자·시공자가 업무상과실치상으로 수사받을 수 있습니다. 민사 배상과 별개입니다.</p>
+    </details>
+    <details>
+      <summary>현재 K스타 표준계약서가 이미 다루는 것과 빠진 것</summary>
+      <ul>
+        <li>제8조: 내부시설은 구조·형태를 바꾸지 않는 범위에서 임대인 승인·감독 아래 설치. 건물 관리 수칙 위반 손해는 임차인 책임.</li>
+        <li>제15조: 임차인이 점유·관리하는 부분의 사고는 임차인 귀책으로 추정(선관주의 증명 시 예외). 임차인 귀책 건물 훼손은 임차인 책임.</li>
+        <li>제16조·원상복구각서: 건물 훼손 전액 배상, 퇴거 시 썬팅·칸막이·창호 변경 원상복구.</li>
+        <li><b>빠진 것:</b> 창 가림 시설의 승인 기준(통기·이격·열파손 검토), 제3자 인명피해 배상과 건물주 구상, 배상책임보험 가입 의무, 창호 점검구. 아래 특약으로 보완합니다.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>보험 확인 사항</summary>
+      <ul>
+        <li>임차인: 영업배상책임보험(시설소유·관리자 배상책임)으로 임차 구역 시설 하자에 따른 제3자 대인·대물 손해를 보장받는지, 창호 유리 낙하가 면책 조항에 걸리지 않는지 보험사에 서면 확인.</li>
+        <li>건물주: 건물 보험의 시설소유자 배상책임 특약 한도 확인. 보험사가 먼저 보상하면 원인 제공자(임차인·시공업체)에게 대위 구상할 수 있습니다.</li>
+        <li>유리 자체 교체비(고소작업 장비 포함)는 배상책임보험과 별개일 수 있으니 특약으로 부담 주체를 정합니다.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- 7 소방 -->
+<section class="sec" id="fire">
+  <div class="sec-head"><p class="eyebrow"><b>7</b> · 소방·건축 법규</p><h2>밀폐 가벽은 유리 말고도 걸리는 것이 있습니다</h2>
+    <p class="lead">창을 고정 벽으로 막으면 '열 수 있는 개구부'가 사라집니다. 착공 전에 건물 소방안전관리자와 함께 아래 항목을 확인하세요.</p></div>
+  <div class="rules">
+    <div class="rule"><span class="chip chip-critical"><i aria-hidden="true">■</i>확인 필수</span><h3>피난기구(완강기) 설치 창</h3><p>9층은 피난기구 설치 대상 층입니다. 완강기 등이 걸린 창이나 그 앞을 가벽으로 막으면 피난시설을 폐쇄·훼손한 것이 되어 과태료와 시정명령 대상입니다.</p><span class="law">소방시설법 제16조 · 시행령 별표4</span></div>
+    <div class="rule"><span class="chip chip-serious"><i aria-hidden="true">▲</i>확인 필요</span><h3>무창층 판정</h3><p>창을 막아 유효 개구부(지름 50cm 원 통과, 바닥에서 1.2m 이내, 쉽게 열거나 깰 수 있을 것) 합계가 바닥면적의 1/30 이하가 되면 무창층이 되어 소방시설 기준이 강화될 수 있습니다.</p><span class="law">소방시설법 시행령 제2조 제1호</span></div>
+    <div class="rule"><span class="chip chip-serious"><i aria-hidden="true">▲</i>해당 시</span><h3>소방관 진입창·배연창</h3><p>빨간 역삼각형 표시가 있는 소방관 진입창이나 자동 개폐 배연창이 이 층에 있다면 가리면 안 됩니다. 2019년 이후 허가 건물은 진입창이 의무입니다.</p><span class="law">건축법 시행령 제51조</span></div>
+    <div class="rule"><span class="chip chip-warn"><i aria-hidden="true">●</i>관리</span><h3>결로·곰팡이·점검</h3><p>겨울철 가벽 안 결로로 곰팡이와 창틀 부식이 생기기 쉽습니다. 금이 가도 보이지 않으므로 창마다 열 수 있는 점검구가 필요합니다.</p><span class="law">임대인 유지관리 · 계약 제8조</span></div>
+  </div>
+</section>
+
+<!-- 8 판단 -->
+<section class="sec" id="decision">
+  <div class="sec-head"><p class="eyebrow"><b>8</b> · 판단</p><h2>유리 종류에 따라 승인 조건이 달라집니다</h2>
+    <p class="lead">유리 종류는 준공도서·창호 시방서로 확인합니다. 편광 선글라스로 유리를 비스듬히 봐서 얼룩무늬가 보이면 열처리 유리(배강도 또는 강화)입니다. 무늬가 안 보인다고 일반유리라고 단정할 수는 없으니, 확실하지 않으면 일반유리로 봅니다. 유리업체의 판별기를 쓰면 정확합니다.</p></div>
+  <div class="decide">
+    <div class="dcol"><h3><span class="chip chip-critical"><i aria-hidden="true">■</i>일반(풀림) · 모름</span></h3>
+      <ul>
+        <li>커튼 + 밀폐 가벽은 불허</li>
+        <li>통기형 가벽으로 바꾸면 조건부 승인: 유리에서 10cm 이상 띄우고, 위·아래 전체 폭에 통기구(각 5cm 이상)</li>
+        <li>가벽의 유리 쪽 면과 커튼은 밝은 색 (Pilkington: 차양은 유리에서 5cm 이상, 위·아래 통기)</li>
+        <li>또는 실내측 유리를 배강도로 바꾼 뒤 시공 (비용 임차인)</li>
+      </ul></div>
+    <div class="dcol"><h3><span class="chip chip-good"><i aria-hidden="true">●</i>배강도 · 강화</span></h3>
+      <ul>
+        <li>열파손 측면에서는 밀폐 가벽도 허용 가능</li>
+        <li>다만 피난기구 창·무창층·진입창 확인은 그대로 필요</li>
+        <li>결로·밀봉재 열화를 줄이려면 통기구를 두는 편이 낫습니다</li>
+        <li>점검구 설치는 공통 조건</li>
+      </ul></div>
+    <div class="dcol"><h3><span class="chip chip-warn"><i aria-hidden="true">●</i>모든 경우 공통</span></h3>
+      <ul>
+        <li>시공 도면(통기·점검구 상세) 사전 제출과 서면 승인</li>
+        <li>유리 또는 창호 업체의 열파손 검토 의견 첨부</li>
+        <li>아래 특약 7개와 배상책임보험 증권 사본</li>
+        <li>첫 겨울~봄(12~4월) 맑은 아침 동측, 여름 서측 집중 점검</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- 9 특약 -->
+<section class="sec" id="clauses">
+  <div class="sec-head"><p class="eyebrow"><b>9</b> · 계약 특약</p><h2>결이고은에스테틱 계약에 넣을 특약 초안</h2>
+    <p class="lead">K스타 표준계약서 제8조(설비 설치)·제15조(임대인 면책)와 함께 쓰도록 작성했습니다. 사용 전 법무 확인을 권합니다.</p></div>
+  <div class="clauses" id="clause-list">
+    <div class="clause"><div class="clause-top"><b>① 창호 가림 시설 승인</b><button class="copy" type="button">복사</button></div><p>임차인은 창호(유리·창틀)에 필름을 붙이거나 커튼·블라인드·가벽 등 차광·차폐 시설을 설치하려는 경우, 시공 도면과 자재 사양서, 유리 또는 창호 업체의 열파손 검토 의견을 제출하여 임대인의 사전 서면 승인을 받아야 한다. 임대인은 열파손·소방상 위험이 있는 경우 승인을 거절하거나 조건을 붙일 수 있다.</p></div>
+    <div class="clause"><div class="clause-top"><b>② 통기·이격·점검구</b><button class="copy" type="button">복사</button></div><p>창호 앞 가벽 등은 유리면에서 10cm 이상 띄우고 상·하부 전체 폭에 각 5cm 이상의 통기구를 두며, 창마다 열 수 있는 점검구를 설치한다. 피난기구 설치 창, 배연창, 소방관 진입창은 가리지 아니한다.</p></div>
+    <div class="clause"><div class="clause-top"><b>③ 유리 파손 비용</b><button class="copy" type="button">복사</button></div><p>임차인이 설치한 시설로 인하여 창호 유리가 파손(열파손 포함)되거나 복층유리 밀봉부가 손상된 경우, 임차인은 고소작업 장비 비용을 포함한 교체 비용 일체를 부담한다.</p></div>
+    <div class="clause"><div class="clause-top"><b>④ 제3자 손해와 구상</b><button class="copy" type="button">복사</button></div><p>제3항의 원인으로 제3자에게 인적·물적 손해가 발생한 경우 임차인이 이를 배상한다. 임대인이 먼저 배상하거나 비용을 지출한 때에는 그 전액을 임차인에게 구상할 수 있으며, 임대보증금에서 공제할 수 있다.</p></div>
+    <div class="clause"><div class="clause-top"><b>⑤ 배상책임보험</b><button class="copy" type="button">복사</button></div><p>임차인은 영업 개시 전 대인 1인당 ○억 원 이상을 보상하는 영업배상책임보험(시설소유·관리자 배상책임 포함)에 가입하여 증권 사본을 임대인에게 제출하고, 계약기간 동안 유지한다.</p></div>
+    <div class="clause"><div class="clause-top"><b>⑥ 이상 통지와 안전조치</b><button class="copy" type="button">복사</button></div><p>임차인은 창호의 균열, 유리 사이 김서림, 결로 등 이상을 발견한 즉시 임대인 또는 관리인에게 알리고, 낙하 위험이 있는 경우 하부 통제 등 임대인의 안전조치에 협조한다. 임대인은 사전 통지 후 점검구를 통해 창호를 점검할 수 있다.</p></div>
+    <div class="clause"><div class="clause-top"><b>⑦ 원상복구</b><button class="copy" type="button">복사</button></div><p>계약 종료 시 임차인은 자신이 설치한 필름(접착제 잔여물 포함), 커튼, 가벽 등을 임차인의 비용으로 철거하여 원상복구하며, 철거 과정에서 발생한 창호 손상도 임차인이 부담한다.</p></div>
+  </div>
+</section>
+
+<!-- 10 실행 -->
+<section class="sec" id="actions">
+  <div class="sec-head"><p class="eyebrow"><b>10</b> · 실행 순서</p><h2>언제 무엇을 할지</h2></div>
+  <div class="phases">
+    <div class="phase"><h3>착공 전</h3><ol>
+      <li>준공도서·창호 시방서로 유리 사양 확인 (없으면 편광 확인, 그래도 모르면 일반유리로 간주)</li>
+      <li>유리·창호 업체에 동·서측 열파손 검토 요청</li>
+      <li>소방안전관리자와 피난기구 창·무창층·진입창 확인</li>
+      <li>통기구·점검구가 들어간 시공 도면 받기</li>
+    </ol></div>
+    <div class="phase"><h3>계약 시</h3><ol>
+      <li>특약 ①~⑦ 반영</li>
+      <li>배상책임보험 증권 사본 수령</li>
+      <li>조건부 서면 승인서 발급 (조건 명시)</li>
+    </ol></div>
+    <div class="phase"><h3>입주 후</h3><ol>
+      <li>첫 12~4월: 맑은 날 오전 동측 점검구 확인</li>
+      <li>7~8월: 서측 오후 점검</li>
+      <li>월 1회 균열·김서림·결로 사진 기록</li>
+    </ol></div>
+    <div class="phase urgent"><h3>금이 간 것을 발견하면</h3><ol>
+      <li>바로 아래 보행로·육교 쪽 통행 통제와 안전펜스</li>
+      <li>유리 전문업체 긴급 교체 (실내 쪽에서 작업 가능 여부 확인)</li>
+      <li>사진·시간 기록, 임차인·보험사에 서면 통지</li>
+      <li>같은 면의 다른 창 일괄 점검</li>
+    </ol></div>
+  </div>
+</section>
+
+<!-- 11 근거 -->
+<section class="sec" id="refs">
+  <div class="sec-head"><p class="eyebrow"><b>11</b> · 근거 자료</p><h2>참고한 법령과 기술 기준</h2></div>
+  <ol class="refs">
+    <li>민법 제623조·제634조·제750조·제758조·제760조 — <a href="https://www.law.go.kr/법령/민법" target="_blank" rel="noopener">국가법령정보센터 민법</a></li>
+    <li>형법 제268조 — <a href="https://www.law.go.kr/법령/형법/제268조" target="_blank" rel="noopener">국가법령정보센터</a></li>
+    <li>소방시설 설치 및 관리에 관한 법률 제16조, 같은 법 시행령 제2조·별표4 — <a href="https://www.law.go.kr/법령/소방시설설치및관리에관한법률" target="_blank" rel="noopener">국가법령정보센터</a></li>
+    <li>건축법 시행령 제51조(거실의 채광 등, 소방관 진입창·배연설비) — <a href="https://www.law.go.kr/법령/건축법시행령/제51조" target="_blank" rel="noopener">국가법령정보센터</a></li>
+    <li>ASTM E1300 설계 파손확률 8/1000 해설 — <a href="https://www.facadetectonics.org/papers/glazing-design-by-astm-e-1300" target="_blank" rel="noopener">Facade Tectonics</a></li>
+    <li>ASTM E2431-12(2020) 적용범위 (열 갇힘·로이 코팅 제외) — <a href="https://store.astm.org/e2431-12r20.html" target="_blank" rel="noopener">ASTM</a></li>
+    <li>Saint-Gobain Glass UK, TS-3A The Resistance of Glass to Thermal Stress — <a href="https://www.saint-gobain-glass.co.uk/wp-content/uploads/2024/02/Thermal-Stress-3A-The-Resistance-of-Glass-to-Thermal-Stress-19-09-2018.pdf" target="_blank" rel="noopener">PDF</a> · TS-3B Spandrels and Shadow Boxes — <a href="https://www.saint-gobain-glass.co.uk/wp-content/uploads/2024/02/Thermal-Stress-3B-Spandrels-and-Shadow-Boxes-19-09-2018.pdf" target="_blank" rel="noopener">PDF</a></li>
+    <li>NGA FB62-19 Thermal Stress in Heat-Treated Spandrel Glass (실내측 유리 110℃ 이상, 온도차 72K 이상) — <a href="https://www.glass.org/sites/default/files/2021-08/FB62-19_Thermal_Stress_in_Heat-Treated_Spandrel_Glass_0521.pdf" target="_blank" rel="noopener">PDF</a></li>
+    <li>Pilkington ATS-124 Spandrel Panel Glazing / ATS-139 Thermal Stress (8/1000 기준) / ATS-136 (차양 5cm 이격·상하 통기) — <a href="https://www.pilkington.com/-/media/pilkington/site-content/usa/window-manufacturers/technical-bulletins/ats124spandrelpanelglazing20130114.pdf" target="_blank" rel="noopener">ATS-124</a> · <a href="https://www.pilkington.com/-/media/pilkington/site-content/usa/window-manufacturers/technical-bulletins/ats139thermalstressforpnaglasses20130102.pdf" target="_blank" rel="noopener">ATS-139</a> · <a href="https://syracuseglass.com/E-DOCS/Insulating%20Glass/EDOCS/pilkington_ats-136.pdf" target="_blank" rel="noopener">ATS-136</a></li>
+    <li>Vitro Glass Education Center, Spandrel Glass / Managing Thermal Stress Breakage — <a href="https://glassed.vitroglazings.com/spandrel-glass" target="_blank" rel="noopener">스팬드럴</a> · <a href="https://glassed.vitroglazings.com/managing-thermal-stress-breakage" target="_blank" rel="noopener">열응력</a></li>
+    <li>NSG(일본판유리) 카탈로그 — 파티션 밀착 금지, 커튼 계수 1.5/1.3 — <a href="https://glass-wonderland.jp/cms/wp-content/uploads/2020/10/2024_g00_004-.pdf" target="_blank" rel="noopener">주의사항</a> · <a href="https://glass-wonderland.jp/cms/wp-content/themes/httpdocs/assets/pdf/catalog-index-5_5.pdf" target="_blank" rel="noopener">열깨짐 계산</a></li>
+    <li>3M Thermal Stress 기술자료 (가장자리 손상 시 강도 최대 50% 감소) — <a href="https://multimedia.3m.com/mws/media/1704947O/thermal-stress.pdf" target="_blank" rel="noopener">PDF</a></li>
+    <li>IWFA Advanced Solar Control Education Guide 2026 (밀착 차양에 의한 공기 차단을 위험 요인으로 명시) — <a href="https://iwfa.com/wp-content/uploads/2026/01/Advanced-Solar-Control-Education-Guide-2026.pdf" target="_blank" rel="noopener">PDF</a></li>
+    <li>AGG Technical Bulletin 1003 Thermal Stress Breakage (맑고 추운 아침이 최악 조건) — <a href="https://agg.com.au/wp-content/uploads/2022/10/AGG-Technical-Bulletin-1003-Thermal-Stress-Breakage.pdf" target="_blank" rel="noopener">PDF</a></li>
+    <li>Kinsella & Lindström (2020), 유리 가장자리 강도 와이블 계수 6.5~12 — <a href="https://thescipub.com/abstract/10.3844/sgamrsp.2020.130.148" target="_blank" rel="noopener">논문</a></li>
+    <li>커튼월 유리의 열파손에 관한 실험적 연구 (한국건축시공학회 학술발표, 2013) — <a href="https://koreascience.kr/article/CFKO201328167665576.do" target="_blank" rel="noopener">KoreaScience</a></li>
+    <li>K스타타워 표준 임대차계약서 제8조·제15조·제16조 및 건물원상복구이행각서 (K관리 계약서 양식)</li>
+    <li>온도·확률 계산: 본 검토의 열평형 모델(4,000회 표본) — 가정은 4절 '계산 방법과 가정' 참조</li>
+  </ol>
+</section>
+
+<footer class="foot">
+  <p>이 문서는 임대인 측 사전 검토용 자료입니다. 온도와 확률은 공학적 추정이며 유리 제조사의 열파손 검토나 구조 계산을 대신하지 않습니다. 법률 해석은 일반론이며, 실제 분쟁에서는 사실관계에 따라 결론이 달라질 수 있으므로 변호사 상담을 권합니다.</p>
+  <p class="num">K STAR TOWER · 9F window review · 2026-10-12</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  var CHART={"spring_east":{"base":{"p10":6.2,"p50":10.5,"p90":16.0,"t10":19,"t50":23,"t90":29,"over40":0,"out90":9.8},"film_black":{"p10":25.8,"p50":32.5,"p90":40.3,"t10":39,"t50":45,"t90":53,"over40":11,"out90":12.4},"wall_closed":{"p10":25.1,"p50":39.4,"p90":60.1,"t10":55,"t50":77,"t90":104,"over40":48,"out90":12.8},"wall_vented":{"p10":9.9,"p50":15.5,"p90":24.0,"t10":25,"t50":32,"t90":41,"over40":0,"out90":11.1},"blind_vented":{"p10":11.1,"p50":16.6,"p90":24.5,"t10":24,"t50":29,"t90":37,"over40":0,"out90":12.3}},"summer_west":{"base":{"p10":3.8,"p50":7.0,"p90":12.1,"t10":33,"t50":36,"t90":41,"over40":0,"out90":13.4},"film_black":{"p10":22.3,"p50":28.6,"p90":35.8,"t10":51,"t50":57,"t90":65,"over40":0,"out90":16.6},"wall_closed":{"p10":17.3,"p50":30.2,"p90":48.3,"t10":79,"t50":101,"t90":128,"over40":23,"out90":16.1},"wall_vented":{"p10":5.8,"p50":10.9,"p90":18.5,"t10":38,"t50":45,"t90":56,"over40":0,"out90":14.7},"blind_vented":{"p10":10.0,"p50":15.1,"p90":22.6,"t10":39,"t50":44,"t90":51,"over40":0,"out90":16.9}},"winter_west":{"base":{"p10":5.1,"p50":10.2,"p90":15.5,"t10":19,"t50":23,"t90":27,"over40":0,"out90":7.4},"film_black":{"p10":22.1,"p50":28.6,"p90":35.6,"t10":36,"t50":41,"t90":48,"over40":1,"out90":9.6},"wall_closed":{"p10":16.1,"p50":28.0,"p90":44.1,"t10":44,"t50":62,"t90":85,"over40":16,"out90":9.3},"wall_vented":{"p10":8.7,"p50":14.1,"p90":20.7,"t10":25,"t50":30,"t90":37,"over40":0,"out90":8.5},"blind_vented":{"p10":9.0,"p50":14.7,"p90":21.3,"t10":23,"t50":27,"t90":33,"over40":0,"out90":9.4}}};
+  var PROB={"base":{"annealed":{"east":[0.0001,0.0004,0.0016],"west":[0,0.0003,0.0012]},"hs":{"east":[0,0,0],"west":[0,0,0]},"ft":{"east":[0,0,0],"west":[0,0,0]}},"film_black":{"annealed":{"east":[0.0424,0.3382,1.2001],"west":[0.0181,0.1446,0.516]},"hs":{"east":[0.0001,0.0006,0.002],"west":[0,0.0002,0.0009]},"ft":{"east":[0,0,0],"west":[0,0,0]}},"wall_closed":{"annealed":{"east":[0.6843,4.5264,11.7243],"west":[0.182,1.3282,3.9394]},"hs":{"east":[0.0012,0.0093,0.0333],"west":[0.0003,0.0024,0.0087]},"ft":{"east":[0,0.0001,0.0003],"west":[0,0,0.0001]}},"wall_vented":{"annealed":{"east":[0.0012,0.0096,0.0343],"west":[0.0005,0.0036,0.013]},"hs":{"east":[0,0,0.0001],"west":[0,0,0]},"ft":{"east":[0,0,0],"west":[0,0,0]}},"blind_vented":{"annealed":{"east":[0.0011,0.0088,0.0316],"west":[0.0006,0.0049,0.0174]},"hs":{"east":[0,0,0.0001],"west":[0,0,0]},"ft":{"east":[0,0,0],"west":[0,0,0]}}};
+  var ROWS=[["base","현재 상태","필름·가벽 없음"],["wall_closed","커튼 + 밀폐 가벽","검토안"],["wall_vented","통기형 가벽","대안"],["blind_vented","통기형 블라인드·커튼","대안"],["film_black","실내측 암막필름","비교"]];
+  var MAX=70, ZONE=40;
+  var rc=document.getElementById('rc'), tb=document.getElementById('rc-table');
+  var tip=document.createElement('div'); tip.className='rc-tip'; tip.hidden=true; rc.appendChild(tip);
+  function pct(v){return (v/MAX*100).toFixed(2)+'%';}
+  function el(tag,cls,text){var e=document.createElement(tag); if(cls)e.className=cls; if(text!=null)e.textContent=text; return e;}
+  function render(season){
+    Array.prototype.slice.call(rc.querySelectorAll('.rc-row,.rc-axis,.rc-axis-lab')).forEach(function(n){n.remove();});
+    tb.textContent='';
+    ROWS.forEach(function(r,i){
+      var d=CHART[season][r[0]];
+      var row=el('div','rc-row');
+      var lab=el('div','rc-lab',r[1]); lab.appendChild(el('small',null,r[2])); row.appendChild(lab);
+      var tr=el('div','rc-track'); tr.style.setProperty('--z',pct(ZONE));
+      var bar=el('span','rc-bar'); bar.style.left=pct(d.p10); bar.style.width=pct(Math.min(d.p90,MAX)-d.p10); tr.appendChild(bar);
+      var dot=el('span','rc-dot'); dot.style.left=pct(d.p50); tr.appendChild(dot);
+      if(i===0){var zl=el('span','rc-zone-lab','40K 초과 = 일반유리 위험'); zl.style.left=pct(ZONE); tr.appendChild(zl);}
+      var hit=el('span','rc-hit'); hit.tabIndex=0; hit.setAttribute('role','img');
+      var msg=r[1]+': 유리 중앙 '+d.t50+'℃ ('+d.t10+'~'+d.t90+'℃), 온도차 중앙 '+d.p50+'K ('+d.p10+'~'+d.p90+'K), 40K 초과 '+d.over40+'%';
+      hit.setAttribute('aria-label',msg);
+      function show(){tip.textContent=''; var b=el('b',null,d.p50+'K'); tip.appendChild(b); tip.appendChild(document.createTextNode(' 온도차 중앙 ('+d.p10+'~'+d.p90+'K)')); tip.appendChild(el('br')); tip.appendChild(document.createTextNode('유리 중앙 '+d.t50+'℃ ('+d.t10+'~'+d.t90+'℃)')); tip.appendChild(el('br')); tip.appendChild(document.createTextNode('40K 초과 비율 '+d.over40+'%')); tip.hidden=false;
+        var rr=tr.getBoundingClientRect(), cr=rc.getBoundingClientRect(); var x=rr.left-cr.left+rr.width*Math.min(d.p50,MAX)/MAX; tip.style.left=Math.max(0,Math.min(x-80,cr.width-260))+'px'; tip.style.top=(rr.bottom-cr.top+6)+'px';}
+      function hide(){tip.hidden=true;}
+      hit.addEventListener('pointerenter',show); hit.addEventListener('pointerleave',hide); hit.addEventListener('focus',show); hit.addEventListener('blur',hide); hit.addEventListener('click',show);
+      tr.appendChild(hit); row.appendChild(tr);
+      var val=el('div','rc-val num',d.p50+'K'); val.appendChild(el('small',null,d.p10+'~'+d.p90)); row.appendChild(val);
+      rc.insertBefore(row,tip);
+      var t=document.createElement('tr'); if(r[0]==='wall_closed')t.className='focus';
+      [r[1]+' ('+r[2]+')', d.t50+'℃ ('+d.t10+'~'+d.t90+')', d.p50+'K', d.p10+'~'+d.p90+'K', d.over40+'%', d.out90+'K'].forEach(function(c,j){var td=el('td',j?'n':null,c); t.appendChild(td);});
+      tb.appendChild(t);
+    });
+    var ax=el('div','rc-axis'); [0,10,20,30,40,50,60,70].forEach(function(v){var s=el('span',null,String(v)); s.style.left=pct(v); ax.appendChild(s);});
+    rc.insertBefore(ax,tip); rc.insertBefore(el('div','rc-axis-lab','유리 중앙–가장자리 온도차 (K)'),tip);
+  }
+  var btns=document.querySelectorAll('.seg button');
+  Array.prototype.forEach.call(btns,function(b){b.addEventListener('click',function(){Array.prototype.forEach.call(btns,function(x){x.setAttribute('aria-pressed',x===b?'true':'false');}); tip.hidden=true; render(b.getAttribute('data-season'));});});
+  render('spring_east');
+
+  function fmt(p){ if(p<0.01) return '0.01% 미만'; if(p<1) return p.toFixed(2)+'%'; if(p<10) return p.toFixed(1)+'%'; return Math.round(p)+'%'; }
+  function floorP(pe,pw,ne,nw){return (1-Math.pow(1-pe/100,ne)*Math.pow(1-pw/100,nw))*100;}
+  function calc(){
+    var s=document.getElementById('c-scn').value, g=document.getElementById('c-glass').value;
+    var ne=Math.max(0,Math.min(300,parseInt(document.getElementById('c-ne').value,10)||0));
+    var nw=Math.max(0,Math.min(300,parseInt(document.getElementById('c-nw').value,10)||0));
+    var d=PROB[s][g], e=d.east, w=d.west;
+    document.getElementById('o-e').textContent=fmt(e[0])===fmt(e[1])?fmt(e[1]):fmt(e[0])+' ~ '+fmt(e[1]);
+    document.getElementById('o-e2').textContent='불리한 조건 '+fmt(e[2]);
+    document.getElementById('o-w').textContent=fmt(w[0])===fmt(w[1])?fmt(w[1]):fmt(w[0])+' ~ '+fmt(w[1]);
+    document.getElementById('o-w2').textContent='불리한 조건 '+fmt(w[2]);
+    var lo=floorP(e[0],w[0],ne,nw), hi=floorP(e[1],w[1],ne,nw), adv=floorP(e[2],w[2],ne,nw);
+    document.getElementById('o-f').textContent=fmt(lo)===fmt(hi)?fmt(hi):fmt(lo)+' ~ '+fmt(hi);
+    document.getElementById('o-f2').textContent='불리한 조건 '+fmt(adv)+' · 창 '+(ne+nw)+'장';
+    var nlo=(ne*e[0]+nw*w[0])/100, nhi=(ne*e[1]+nw*w[1])/100;
+    function fn(x){return x<0.01?'0.01장 미만':x.toFixed(2)+'장';}
+    document.getElementById('o-n').textContent=fn(nlo)===fn(nhi)?fn(nhi):fn(nlo)+' ~ '+fn(nhi);
+  }
+  ['c-scn','c-glass','c-ne','c-nw'].forEach(function(id){var x=document.getElementById(id); x.addEventListener('input',calc); x.addEventListener('change',calc);});
+  calc();
+
+  Array.prototype.forEach.call(document.querySelectorAll('.clause .copy'),function(b){
+    b.addEventListener('click',function(){
+      var p=b.closest('.clause').querySelector('p'), txt=p.textContent;
+      function ok(){b.textContent='복사됨'; b.classList.add('done'); setTimeout(function(){b.textContent='복사'; b.classList.remove('done');},1600);}
+      function fallback(){var r=document.createRange(); r.selectNodeContents(p); var sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(r); b.textContent='선택됨 · Ctrl+C';}
+      try{ navigator.clipboard.writeText(txt).then(ok,fallback); }catch(e){ fallback(); }
+    });
+  });
+})();
+</script>
